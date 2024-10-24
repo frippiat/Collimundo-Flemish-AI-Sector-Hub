@@ -1,0 +1,465 @@
+Ghent University, g.V().has("name", within("Ghent University", "UGent", "University of Ghent", "Universiteit Gent"))
+Flanders Investment and Trade, g.V().has("name", within("Flanders Investment and Trade", "FIT", "Flanders Investment & Trade"))
+Biotech, g.V().has("name", within("Biotech", "Biotechnology", "Biotech Research", "Biotech Startups"))
+AI, g.V().has("actor", "implementor")
+Sustainable Energy, g.V().has("actor", "domain").has("name", within("Sustainability", "Energy")).in()
+Venture Capital, g.V().has("actor", "domain").has("name", within("Venture Capital", "Wealth Management", "Finance", "Investment")).in()
+Healthcare, g.V().has("actor", "domain").has("name", within("Healthcare", "Medical", "Pharmaceutical", "Biomedical")).in()
+Finance, g.V().has("actor", "domain").has("name", within("Finance", "Insurance", "Investment")).in()
+Education, g.V().has("actor", "domain").has("name", within("Education", "Learning", "Training")).in()
+Technology, g.V().has("actor", "domain").has("name", within("Technology", "Tech", "Innovation", "Research")).in()
+Research, g.V().or(_().has("actor", "domain").has("name", within("Research", "Science", "Study", "Investigation")).in(), _().has("actor", "research group"))
+Company,
+Investor,
+Research Group, g.V().or(_().has("actor", "domain").has("name", within("Research", "Science", "Study", "Investigation")).in(), _().has("actor", "research group"))
+University, g.V().has("actor", "university")
+Bruges, g.V().has("city", within("Bruges", "Brugge"))
+Antwerp, g.V().has("city", within("Antwerp", "Antwerpen"))
+Leuven, g.V().has("city", within("Leuven", "Louvain"))
+Sustainability, g.V().has("actor", "domain").has("name", "Sustainability").in()
+AI Research, g.V().has("actor", "research")
+Biotech Startups, g.V().has("actor", "domain").has("name", "Biotechnology").in().has("actor", "implementor")
+Venture Funding, g.V().has("actor", "domain").has("name", within("Venture Funding", "Wealth Management", "Finance", "Investment").in()
+Pharmaceutical, g.V().has()
+Mechelen
+Hasselt
+Genk
+Ostend
+Renewable Energy
+Data Science
+Machine Learning
+Deep Learning
+Natural Language Processing
+Robotics
+Kortrijk, g.V().has('city', 'Kortrijk')
+kortrijk, g.V().has('city', 'Kortrijk')
+Gent, g.V().has('city', 'Gent')
+Ghent, g.V().has('city', 'Gent')
+ghent, g.V().has('city', 'Gent')
+gent, g.V().has('city', 'Gent')
+Waregem, g.V().has('city', 'Waregem')
+waregem, g.V().has('city', 'waregem')
+Zaventem, g.V().has('city', 'Zaventem')
+Ostend, g.V().has('city', 'ostend')
+Roeselare, g.V().has(
+Ghent University
+Flanders Investment and Trade
+Biotech
+AI
+Sustainable Energy
+Venture Capital
+Healthcare
+Finance
+Education
+Technology
+Research
+Company
+Investor
+Research Group
+University
+Bruges
+Antwerp
+Leuven
+Sustainability
+AI Research
+Biotech Startups
+Venture Funding
+Pharmaceutical
+Mechelen
+Hasselt
+Genk
+Ostend
+Renewable Energy
+Data Science
+Machine Learning
+Deep Learning
+Natural Language Processing
+Robotics
+Kortrijk
+Gent
+Waregem
+Zaventem
+Roeselare
+Turnhout
+Verviers
+Wavre
+Mons
+Liege
+Charleroi
+Namur
+Arlon
+Eupen
+Genk
+Braine-l'Alleud
+La Louviere
+MedTech
+Blockchain
+FinTech
+AgriTech
+FoodTech
+InsurTech
+HealthTech
+Green Energy
+Solar Power
+Wind Energy
+Hydro Energy
+Geothermal Energy
+BioEnergy
+Space Tech
+Aerospace
+Aviation
+Logistics
+Supply Chain
+IoT
+Big Data
+E-commerce
+Retail
+Fashion Tech
+Textiles
+Construction
+Real Estate
+PropTech
+Manufacturing
+Industrial Tech
+Materials Science
+Chemicals
+Cosmetics
+Personal Care
+Home Care
+FMCG
+Consumer Goods
+Consumer Electronics
+Mobile Devices
+Telecommunications
+Media
+Entertainment
+Music Tech
+Film Tech
+Arts Tech
+Sports Tech
+Gaming
+eSports
+Fitness Tech
+Nutrition Tech
+Food and Beverages
+Restaurants
+Food Delivery
+Travel Tech
+Hospitality
+Tourism
+Events Tech
+Ticketing
+Transportation
+Mobility Tech
+Electric Vehicles
+Automotive
+Motorcycles
+Bicycles
+Drones
+Marine Tech
+Shipping
+Railways
+Public Transport
+Ride Sharing
+Car Sharing
+Bike Sharing
+Scooter Sharing
+Walking
+Hiking
+Camping
+Outdoors
+Adventure Sports
+Water Sports
+Skiing
+Snowboarding
+Ice Skating
+Rock Climbing
+Mountaineering
+Paragliding
+Skydiving
+Scuba Diving
+Surfing
+Sailing
+Fishing
+Hunting
+Archery
+Shooting
+Horse Riding
+Golf
+Tennis
+Soccer
+Cricket
+Rugby
+Basketball
+Baseball
+Volleyball
+Athletics
+Gymnastics
+Swimming
+Cycling
+Triathlon
+Marathon
+Ghent University biotech research
+Flanders Investment and Trade in Leuven
+AI startups in Bruges
+Sustainable Energy companies in Antwerp
+Venture Capital firms in Ghent
+Healthcare companies in Mechelen
+Fintech startups in Hasselt
+Education technology in Genk
+Technology research groups in Ostend
+Research in renewable energy in Kortrijk
+AI companies in Waregem
+Investors in Zaventem
+Biotech Research Group in Roeselare
+University research in Turnhout
+Sustainability initiatives in Verviers
+Pharmaceutical companies in Wavre
+AI Research in Mons
+Biotech startups in Liege
+Venture Funding in Charleroi
+Pharmaceutical research in Namur
+Arlon AI companies
+Eupen biotech startups
+Genk venture capital
+Braine-l'Alleud sustainable energy
+La Louviere healthcare companies
+MedTech startups in Ghent
+Blockchain companies in Antwerp
+FinTech in Leuven
+AgriTech research in Bruges
+FoodTech startups in Ghent
+InsurTech companies in Antwerp
+HealthTech research in Leuven
+Green Energy initiatives in Bruges
+Solar Power companies in Ghent
+Wind Energy research in Antwerp
+Hydro Energy startups in Leuven
+Geothermal Energy in Bruges
+BioEnergy research in Ghent
+Space Tech companies in Antwerp
+Aerospace research in Leuven
+Aviation startups in Bruges
+Logistics companies in Ghent
+Supply Chain research in Antwerp
+IoT startups in Leuven
+Big Data companies in Bruges
+E-commerce research in Ghent
+Retail startups in Antwerp
+Fashion Tech companies in Leuven
+Textiles research in Bruges
+Construction startups in Ghent
+Real Estate companies in Antwerp
+PropTech research in Leuven
+Manufacturing startups in Bruges
+Industrial Tech in Ghent
+Materials Science research in Antwerp
+Chemicals companies in Leuven
+Cosmetics research in Bruges
+Personal Care startups in Ghent
+Home Care companies in Antwerp
+FMCG research in Leuven
+Consumer Goods startups in Bruges
+Consumer Electronics companies in Ghent
+Mobile Devices research in Antwerp
+Telecommunications startups in Leuven
+Media companies in Bruges
+Entertainment research in Ghent
+Music Tech startups in Antwerp
+Film Tech companies in Leuven
+Arts Tech research in Bruges
+Sports Tech startups in Ghent
+Gaming companies in Antwerp
+eSports research in Leuven
+Fitness Tech startups in Bruges
+Nutrition Tech companies in Ghent
+Food and Beverages research in Antwerp
+Restaurants startups in Leuven
+Food Delivery companies in Bruges
+Travel Tech research in Ghent
+Hospitality startups in Antwerp
+Tourism companies in Leuven
+Events Tech research in Bruges
+Ticketing startups in Ghent
+Transportation companies in Antwerp
+Mobility Tech research in Leuven
+Electric Vehicles startups in Bruges
+Automotive companies in Ghent
+Ghent University biotech research
+Flanders Investment and Trade in Leuven
+AI startups in Bruges
+Sustainable Energy companies in Antwerp
+Venture Capital firms in Ghent
+Healthcare companies in Mechelen
+Fintech startups in Hasselt
+Education technology in Genk
+Technology research groups in Ostend
+Research in renewable energy in Kortrijk
+AI companies in Waregem
+Investors in Zaventem
+Biotech Research Group in Roeselare
+University research in Turnhout
+Sustainability initiatives in Verviers
+Pharmaceutical companies in Wavre
+AI Research in Mons
+Biotech startups in Liege
+Venture Funding in Charleroi
+Pharmaceutical research in Namur
+Arlon AI companies
+Eupen biotech startups
+Genk venture capital
+Braine-l'Alleud sustainable energy
+La Louviere healthcare companies
+MedTech startups in Ghent
+Blockchain companies in Antwerp
+FinTech in Leuven
+AgriTech research in Bruges
+FoodTech startups in Ghent
+InsurTech companies in Antwerp
+HealthTech research in Leuven
+Green Energy initiatives in Bruges
+Solar Power companies in Ghent
+Wind Energy research in Antwerp
+Hydro Energy startups in Leuven
+Geothermal Energy in Bruges
+BioEnergy research in Ghent
+Space Tech companies in Antwerp
+Aerospace research in Leuven
+Aviation startups in Bruges
+Logistics companies in Ghent
+Supply Chain research in Antwerp
+IoT startups in Leuven
+Big Data companies in Bruges
+E-commerce research in Ghent
+Retail startups in Antwerp
+Fashion Tech companies in Leuven
+Textiles research in Bruges
+Construction startups in Ghent
+Real Estate companies in Antwerp
+PropTech research in Leuven
+Manufacturing startups in Bruges
+Industrial Tech in Ghent
+Materials Science research in Antwerp
+Chemicals companies in Leuven
+Cosmetics research in Bruges
+Personal Care startups in Ghent
+Home Care companies in Antwerp
+FMCG research in Leuven
+Consumer Goods startups in Bruges
+Consumer Electronics companies in Ghent
+Mobile Devices research in Antwerp
+Telecommunications startups in Leuven
+Media companies in Bruges
+Entertainment research in Ghent
+Music Tech startups in Antwerp
+Film Tech companies in Leuven
+Arts Tech research in Bruges
+Sports Tech startups in Ghent
+Gaming companies in Antwerp
+eSports research in Leuven
+Fitness Tech startups in Bruges
+Nutrition Tech companies in Ghent
+Food and Beverages research in Antwerp
+Restaurants startups in Leuven
+Food Delivery companies in Bruges
+Travel Tech research in Ghent
+Hospitality startups in Antwerp
+Tourism companies in Leuven
+Events Tech research in Bruges
+Ticketing startups in Ghent
+Transportation companies in Antwerp
+Mobility Tech research in Leuven
+Electric Vehicles startups in Bruges
+Automotive companies in Ghent
+Sustainable energy companies
+AI research universities
+Venture capital firms in healthcare
+Biotech startups with focus on genetics
+Advanced robotics research groups
+Green energy initiatives
+Data science in healthcare sector
+Machine learning application in finance
+Deep learning in autonomous vehicles
+Natural Language Processing in customer service
+E-commerce giants in Europe
+Retail technology for small businesses
+Fashion tech innovations
+Textile industry startups
+Construction tech for sustainable buildings
+Real Estate tech startups
+PropTech companies with AI focus
+Manufacturing innovations in Europe
+Industrial tech with IoT applications
+Materials Science research in automotive industry
+Chemical companies with green initiatives
+Cosmetics industry market leaders
+Personal Care tech startups
+Home Care tech in Europe
+FMCG companies with highest growth
+Consumer Goods companies with sustainable products
+Consumer Electronics innovations
+Mobile Devices with best reviews
+Telecommunications market leaders in Europe
+Media companies with largest audience
+Entertainment tech startups
+Music Tech companies with innovative solutions
+Film Tech startups in Europe
+Arts Tech with AI applications
+Sports Tech for performance improvement
+Gaming companies with most popular games
+eSports companies in Europe
+Fitness Tech with best user reviews
+Nutrition Tech startups with innovative products
+Food and Beverages companies with best sustainable practices
+Restaurant chains with best reviews
+Food Delivery startups with fastest delivery times
+Travel Tech companies with best customer service
+Hospitality startups with highest growth
+Tourism companies with best sustainable practices
+Events Tech startups in Europe
+Ticketing platforms with best user experience
+Transportation companies with green initiatives
+Mobility Tech startups with innovative solutions
+Electric Vehicles with longest range
+Automotive companies with best safety features
+Motorcycles with best fuel efficiency
+Bicycles with best reviews
+Drone companies with innovative solutions
+Marine tech companies in Europe, g.V().has("actor", "domain").has("name", "Marine").in().has('actor', 'implementor')
+Shipping companies with fastest delivery times, g.V().has("actor", "domain").has("name", within("Logistics", "Transportation", "Supply Chain", "Shipping")).in().has("actor", "implementor")
+Public Transport apps with best user reviews, ""
+Ride Sharing startups with largest user base, g.V().has("actor", "domain").has("name", "Ridesharing").has("actor", "implementor")
+Car Sharing companies in Europe, g.V().has("actor", "domain").has("name", within("Ridesharing", "Car-sharing")).has("actor", "implementor")
+Bike Sharing startups with most locations, g.V().has("actor", "domain").has("name", "Ridesharing").has("actor", "implementor")
+Scooter Sharing companies with best reviews, g.V().has("actor", "domain").has("name", "Ridesharing").has("actor", "implementor")
+Walking and hiking gear reviews,
+Camping gear with best user reviews
+Outdoors equipment startups
+Adventure Sports companies in Europe
+Water Sports equipment with best reviews
+Skiing gear companies with highest ratings
+Snowboarding equipment startups
+Ice Skating gear with best user reviews
+Rock Climbing equipment companies
+Mountaineering gear startups in Europe
+Paragliding companies with best safety records
+Skydiving companies with best user reviews
+Scuba Diving gear with highest ratings
+Surfing equipment companies with best reviews
+Sailing gear startups in Europe
+Fishing equipment with best user reviews
+Hunting gear companies with highest ratings
+Archery equipment startups
+Shooting gear with best reviews
+Horse Riding gear companies
+Golf equipment startups in Europe
+Tennis gear with highest ratings,
+Soccer equipment companies with best reviews, g.V().has("actor", "domain").has("name", within("Fitness", "Sports", "Equipment", "Manufacturing", "Retail")).in()
+Cricket gear startups, g.V().has("actor", "domain").has("name", within("Fitness", "Sports", "Equipment", "Manufacturing", "Retail")).in().has("actor", "implementor")
+Rugby equipment with best user reviews, g.V().has("actor", "domain").has("name", within("Fitness", "Sports", "Equipment", "Manufacturing", "Retail")).in()
+Basketball gear companies with highest ratings, g.V().has("actor", "domain").has("name", within("Fitness", "Sports", "Equipment", "Manufacturing", "Retail")).in()
+Baseball equipment startups in Europe, g.V().has("actor", "domain").has("name", within("Fitness", "Sports", "Equipment", "Manufacturing", "Retail")).in()
+Volleyball gear with best user reviews, g.V().has("actor", "domain").has("name", within("Sports", "Fitness",Equipment","Wearables")).in()
+Athletics equipment companies, g.V().has("actor", "domain").has("name", within("Fitness", "Sports", "Equipment", "Manufacturing", "Retail")).in()
+Gymnastics gear startups, g.V().has("actor", "domain").has("name", within("Fitness", "Wellness","Sports","Equipment")).in().has("actor", "implementor")
+Swimming , g.V().has("actor", "domain").has("name", within("Fitness", "Marine", "Wellness","Sports")).in()

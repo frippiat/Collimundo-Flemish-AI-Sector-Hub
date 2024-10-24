@@ -1,0 +1,9 @@
+# API
+newspaper3k==0.2.8
+lxml_html_clean==0.1.1
+gdelt==0.1.14
+xmltodict==0.13.0
+nltk==3.7
+requests==2.31.0
+requests-file==2.0.0
+

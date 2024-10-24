@@ -1,0 +1,26 @@
+
+To combine the structures:
+Combine multiple instances of the provided structure of a specific company into one consolidated list. Each instance is represented as a list with the following structure:
+["Name (use most occurring)",
+"Short summary of less than 5 sentences (use only information that occurs in more than one summary of the structures!)",
+["LinkedIn url", "Facebook url", "Instagram url", "Twitter/X url"],
+["Telephone number", "Email address"],
+["List of key partners (no persons, only companies!)"],
+["List of maximum (!) 5 most important domain tags in the given structures"]
+]
+If only one instance is presented, return this instance as is without any extra explanation. For each position in the structure, inspect all information across all instances and extract the most important information.
+
+Please provide the combined information as a Python list without any additional explanation.
+
+to extract information
+Extract the information in between "" from the provided text and return it in the provided structure:
+["Name", "short summary", ["linkedin", "facebook", "instagram", "Twitter/X"], ["telefoonnumber", "email address"],
+["List of key partners (no persons, only companies!)"],["list of less than 5 most important domain tags of the company"]].
+If any information cannot be extracted, insert "" on the appropriate positions. Only add information that is clearly correct,
+as I provide only parts of the website! Do not provide extra explanation along with the list!
+
+
+
+
+
+
