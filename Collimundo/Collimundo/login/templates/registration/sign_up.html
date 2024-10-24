@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Signup{% endblock title %}
+
+{% block head %}
+
+<link rel="stylesheet" href="{% static 'login/style/loginpage.css' %}" />
+
+{% endblock head %}
+
+{% block content %}
+
+<style>
+    main {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .max-height-fit {
+        align-content: center;
+    }
+</style>
+<div class="max-height-fit col-12">
+    <div class="login-container">
+        <form class="login-form" method="post">
+            {% csrf_token %}
+            <h2>Signup</h2>
+            <!-- First Name -->
+            <div class="form-group">
+                <div>
+                    <label for="id_first_name">First name:</label>
+                    <input type="text" id="id_first_name" name="first_name" placeholder="First Name*" value="{{ first_name }}" required />
+                    {% if form.first_name.errors %}
+                        {% for error in form.first_name.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+            <!-- Last Name -->
+            <div class="form-group">
+                <div>
+                    <label for="id_last_name">Last name:</label>
+                    <input type="text" id="id_last_name" name="last_name" placeholder="Last Name*" value="{{ last_name }}" required />
+                    {% if form.last_name.errors %}
+                        {% for error in form.last_name.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+            <!-- Email Address -->
+            <div class="form-group">
+                <div>
+                    <label for="id_email">Email Address:</label>
+                    <input type="text" id="id_email" name="email" placeholder="Email Address*" value="{{ email }}" required />
+                    {% if form.email.errors %}
+                        {% for error in form.email.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+            <!-- Phone Number -->
+            <div class="form-group">
+                <div>
+                    <label for="id_phone_number">Phone Number:</label>
+                    <input type="text" id="id_phone_number" name="phone_number" placeholder="Phone Number" value="{{ phone_number }}" />
+                    {% if form.phone_number.errors %}
+                        {% for error in form.phone_number.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+            <!-- Higher Education Dropdown -->
+            <div class="form-group">
+                <div>
+                    <label for="id_higher_education">Higher Education:</label>
+                    <select class="form-select" id="id_higher_education" name="higher_education">
+                        <option value="">Select University</option>
+                        {% for university in universities %}
+                            <option value="{{ university }}">{{ university }}</option>
+                        {% endfor %}
+                    </select>
+                    {% for error in form.higher_education.errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            </div>
+             <!-- Password -->
+            <div class="form-group">
+                <div>
+                    <label for="id_password1">Password:</label>
+                    <input type="password" id="id_password1" name="password1" placeholder="Password*" value="{{ password1 }}" required />
+                </div>
+            </div>
+            <!-- Confirm Password -->
+            <div class="form-group">
+                <div>
+                    <label for="id_password2">Password:</label>
+                    <input type="password" id="id_password2" name="password2" placeholder="Confirm Password*" value="{{ password2 }}" required />
+                    {% if form.password2.errors %}
+                        {% for error in form.password2.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+            <button type="submit">Sign up</button>
+            <p class="forgot-password">Already have an account? <a href="{% url 'login' %}">Click here</a></p>
+        </form>
+    </div>
+</div>
+
+{% endblock content %}

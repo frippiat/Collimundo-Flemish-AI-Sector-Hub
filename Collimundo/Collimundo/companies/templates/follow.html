@@ -1,0 +1,114 @@
+{% extends "base_including_search.html" %}
+{% load static %}
+
+{% block title %}Follow{% endblock title %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'companies/style/follow.css' %}" />
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+{% endblock head %}
+
+{% block content %}
+
+<div class="follow-container">
+    <div id="title" class="title">
+        <h2>Companies you follow</h2>
+    </div>
+    <select id="domain-filter" class="domain-filter">
+        <option value="all">All</option>
+        <!-- Populate the dropdown with unique domain values -->
+        {% for domain in domains %}
+            <option value="{{ domain }}">{{ domain }}</option>
+        {% endfor %}
+    </select>
+    <div class="row" id="company-cards">
+        {% if companies %}
+            {% for company, domains in companies.items %}
+                <div class="column {% for domain in domains %}{{ domain }} {% endfor %}">
+                    <div class="content">
+                        <a href="#" onclick="redirectToCompanyPage('{{ company.0 }}')">
+                            <div>
+                                <img id="logo_{{ company.1 }}" src="{% static '/images/company_logos/' %}{{ company.1 }}.png" alt="{{ company.1 }}" onerror="logoExistsNot('{{ company.1 }}')"/>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            There are no companies followed. Please follow a company to see.
+        {% endif %}
+    </div>
+</div>
+
+<script>
+
+    document.addEventListener("DOMContentLoaded", function() {
+        // Get all company cards
+        var companyCards = document.querySelectorAll("#company-cards .column");
+
+        // Add change event listener to the domain filter dropdown
+        document.getElementById("domain-filter").addEventListener("change", function() {
+            var selectedDomain = this.value;
+
+            // Loop through each company card
+            companyCards.forEach(function(card) {
+                // If 'All' is selected or the card has the selected domain as a class, show it; otherwise, hide it
+                if (selectedDomain === "all") {
+                    card.style.display = "block";
+                } else {
+                    if (card.classList.contains(selectedDomain)) {
+                        card.style.display = "block";
+                    } else {
+                        card.style.display = "none";
+                    }
+                }
+            });
+        });
+    });
+    /*
+    // Filtering function to show/hide logos based on category
+    function filterSelection(c) {
+        var logos = document.querySelectorAll('.column');
+        for (var i = 0; i < logos.length; i++) {
+            var logo = logos[i];
+            var category = logo.classList.contains(c);
+            if (c === 'all') {
+                logo.style.display = "flex"; // Show all logos when "All" is selected
+            } else {
+                if (category) {
+                    logo.style.display = "flex"; // Show logos belonging to the selected category
+                } else {
+                    logo.style.display = "none"; // Hide logos not belonging to the selected category
+                }
+            }
+        }
+        updateButtonState(c);
+    }
+
+    // Function to update button state (highlight active button)
+    function updateButtonState(activeButton) {
+        var btns = document.querySelectorAll("#ButtonContainer .btn");
+        btns.forEach(function(btn) {
+            if (btn.textContent.trim().toLowerCase() === activeButton.toLowerCase()) {
+                btn.classList.add("active");
+            } else if (activeButton.toLowerCase() === 'all' && btn.textContent.trim().toLowerCase() === 'show all') {
+                btn.classList.add("active"); // Keep "Show all" button active if "All" is selected
+            } else {
+                btn.classList.remove("active");
+            }
+        });
+    }
+    */
+    // Logo doesn't exist
+    function logoExistsNot(companyName) {
+        document.getElementById('logo_' + companyName).outerHTML = '<h1 style="color: var(--accent-color); border: 3px solid var(--accent-color); border-radius: 10px; text-align: center;">' + companyName + '</h1>';
+    }
+
+    // Function to redirect to the company page
+    function redirectToCompanyPage(companyName) {
+        window.location.href = "{% url 'company_page' %}?company=" + companyName;
+    }
+
+</script>
+
+{% endblock content %}

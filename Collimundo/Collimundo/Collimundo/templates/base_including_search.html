@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block buttons-header %}
+{% block extra-buttons %}{% endblock extra-buttons %}
+
+{% if user.is_authenticated %}
+<a class="nav-link" href="{% url 'profilepage' id=user.profile_page_url %}">Profile</a>
+{% else %}
+<li class="nav-item">
+    <a class="nav-link d-flex align-items-center" href="{% url 'login' %}">
+        <img class="me-1" src="{% static 'images/icon/login_icon.png' %}" alt="" width="15" height="15"/>Log in
+    </a>
+</li>
+{% endif %}
+
+<!-- Temporarly here -> should also only appear when user is logged in -->
+{% if user.is_authenticated %}
+<li class="nav-item">
+    <a class="nav-link d-flex align-items-center" href="{% url 'follow' %}">
+        <img class="me-1" src="{% static 'images/icon/follow.png' %}" alt="" width="15" height="15"/>Follow
+    </a>
+</li>
+{% else %}
+
+{% endif %}
+
+<li class="nav-item">
+    <a class="nav-link d-flex align-items-center" href="{% url 'about' %}">
+        About
+    </a>
+</li>
+
+{% endblock buttons-header %}
+
+{% block search-header %}
+{% include "search_bar.html" %}
+{% endblock search-header %}
+
+{% block search-head %}
+{% include "search_engine_head.html" %}
+{% endblock search-head %}
+
+{% block searh-overlay %}
+{% include "search_engine_body.html" %}
+{% endblock searh-overlay %}

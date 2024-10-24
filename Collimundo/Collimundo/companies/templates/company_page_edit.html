@@ -1,0 +1,302 @@
+{% extends "base_including_search.html" %}
+{% load static %}
+
+{% block title %}Company Page{% endblock title %}
+
+{% block head %}
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <link rel="stylesheet" href="{% static 'companies/style/company_page.css' %}" />
+{% endblock head %}
+
+{% block content %}
+<body onload="fetchWidget('widget-container-cp1', 'cp1', 'line_graph', '{{ company_details.name_lower }}', 'EIGEN VERMOGEN'), fetchWidget('widget-container-cp2', 'cp2', 'bar_graph', '{{ company_details.name_lower }}', 'Brutomarge')">
+<div class="page_body w-100 h-100">
+    <div class="info_container w-100 h-100">
+        <div id="info_head" class="info_head">
+            <div class="logo-label">
+                <div id="logo" class="logo">
+                    {% with "/images/company_logos/"|add:company_details.name_lower|add:".png" as logo_url %}
+                    <img src="{% static logo_url %}" alt="company logo" onerror="logoExistsNot()"/>
+                    {% endwith %}
+                </div>
+                <div class="label">
+                    {{ company_details.label }}
+                </div>
+            </div>
+            <div id="company" class="company">
+                <div id="company-name" class="company-name">
+                    {{ company_details.name }}
+                </div>
+                <div class="social-media-bar">
+                    <a class="social-icon-facebook social-icon-item" href="{{ company_details.facebook }}" target="_blank" rel="nofollow" title="Facebook">
+                        <span><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve" class="social-icon"> <g> <path fill="%233E68C0" d="M5.677,12.998V8.123h3.575V6.224C9.252,2.949,11.712,0,14.736,0h3.94v4.874h-3.94 c-0.432,0-0.934,0.524-0.934,1.308v1.942h4.874v4.874h-4.874V24H9.252V12.998H5.677z"/> </g> </svg></span>
+                    </a>
+                    <a class="social-icon-twitter social-icon-item" href="{{ company_details.twitter }}" target="_blank" rel="nofollow" title="Twitter">
+                        <span><svg width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg" class="social-icon"> <path d="M15.4636 0.404785H18.3771L12.012 7.6865L19.5 17.5953H13.637L9.04485 11.5857L3.79041 17.5953H0.875191L7.68324 9.80666L0.5 0.404785H6.51187L10.6628 5.89781L15.4636 0.404785ZM14.4411 15.8498H16.0555L5.63466 2.0586H3.90226L14.4411 15.8498Z" fill="%23111111"/> </svg></span>
+                    </a>
+                    <a class="social-icon-instagram social-icon-item" href="{{ company_details.instagram }}" target="_blank" rel="nofollow" title="Instagram">
+                        <span><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve" class="social-icon"> <g> <circle fill="%23222222" cx="18.05" cy="5.992" r="1.355"></circle> <path fill="%23222222" d="M12.021,5.806c-3.427,0-6.215,2.788-6.215,6.215s2.788,6.215,6.215,6.215s6.215-2.788,6.215-6.215 S15.448,5.806,12.021,5.806z M12.021,15.412c-1.87,0-3.391-1.521-3.391-3.391s1.521-3.391,3.391-3.391 c1.87,0,3.391,1.521,3.391,3.391S13.891,15.412,12.021,15.412z"/> <path fill="%23222222" d="M23.369,4.574c-0.357-0.919-0.846-1.669-1.539-2.362c-0.693-0.693-1.443-1.182-2.362-1.539 c-0.905-0.352-1.836-0.533-3.018-0.587c-1.153-0.053-1.536-0.065-4.43-0.065c-2.895,0-3.277,0.012-4.43,0.065 C6.409,0.14,5.478,0.321,4.574,0.673C3.655,1.03,2.904,1.519,2.212,2.212C1.519,2.904,1.03,3.655,0.673,4.573 C0.321,5.478,0.14,6.409,0.086,7.591c-0.053,1.153-0.065,1.536-0.065,4.43s0.012,3.277,0.065,4.43 c0.054,1.182,0.235,2.113,0.587,3.018c0.357,0.919,0.846,1.669,1.539,2.362c0.693,0.693,1.443,1.182,2.362,1.539 c0.905,0.352,1.836,0.533,3.018,0.587c1.153,0.053,1.536,0.065,4.43,0.065c2.895,0,3.277-0.012,4.43-0.065 c1.182-0.054,2.113-0.235,3.018-0.587c0.919-0.357,1.669-0.846,2.362-1.539c0.693-0.693,1.182-1.443,1.539-2.362 c0.352-0.905,0.533-1.836,0.587-3.018c0.053-1.153,0.065-1.536,0.065-4.43s-0.012-3.277-0.065-4.43 C23.902,6.409,23.721,5.478,23.369,4.574z M21.135,16.322c-0.05,1.105-0.239,1.715-0.398,2.123 c-0.216,0.556-0.486,0.971-0.903,1.389c-0.417,0.417-0.833,0.687-1.389,0.904c-0.408,0.159-1.018,0.347-2.123,0.397 c-1.123,0.051-1.46,0.062-4.301,0.062c-2.841,0-3.178-0.011-4.301-0.062c-1.105-0.05-1.715-0.239-2.123-0.398 c-0.556-0.216-0.971-0.486-1.389-0.903c-0.417-0.417-0.687-0.833-0.904-1.389c-0.159-0.408-0.347-1.018-0.397-2.123 c-0.051-1.123-0.062-1.46-0.062-4.301s0.011-3.178,0.062-4.301c0.05-1.105,0.239-1.715,0.398-2.123 c0.216-0.556,0.486-0.971,0.903-1.389c0.417-0.417,0.833-0.687,1.389-0.904C6.005,3.146,6.615,2.957,7.72,2.907 c1.123-0.051,1.46-0.062,4.301-0.062c2.841,0,3.178,0.011,4.302,0.062c1.105,0.05,1.715,0.239,2.123,0.398 c0.556,0.216,0.971,0.486,1.389,0.903c0.417,0.417,0.687,0.833,0.904,1.389c0.159,0.408,0.347,1.018,0.397,2.123 c0.051,1.123,0.062,1.46,0.062,4.301S21.186,15.199,21.135,16.322z"/> </g> </svg></span>
+                    </a>
+                    <a class="social-icon-linkedin social-icon-item" href="{{ company_details.linkedin }}" target="_blank" rel="nofollow" title="Linkedin">
+                        <span><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve" class="social-icon"> <g> <path id="linkedin-square-rounded-icon_2_" fill="%2315ACE5" d="M6.52,22h-4.13V8.667h4.13V22z M4.436,6.92 c-1.349,0-2.442-1.101-2.442-2.46C1.994,3.102,3.087,2,4.436,2s2.442,1.102,2.442,2.46C6.877,5.819,5.784,6.92,4.436,6.92z M21.994,22h-4.109c0,0,0-5.079,0-6.999c0-1.919-0.73-2.991-2.249-2.991c-1.652,0-2.515,1.116-2.515,2.991c0,2.054,0,6.999,0,6.999 h-3.96V8.667h3.96v1.796c0,0,1.191-2.202,4.02-2.202c2.828,0,4.853,1.727,4.853,5.298C21.994,17.129,21.994,22,21.994,22z"/> </g> </svg></span>
+                    </a>
+                </div>
+                <hr/>
+            </div>
+            <div id="page-claiming" class="page-claiming">
+                <div class="page-claiming-buttons">
+                    {% if user.is_authenticated %}
+                        <div>
+                            <!-- Follow button -->
+                            {% if followed %}
+                                <div id="unfollow">
+                                    <!--<br />If you want to remove this company from your follow list, please click here.-->
+                                    <button id="unfollow-btn" class="btn active">Unfollow</button>
+                                </div>
+                                <div id="follow" class="hidden">
+                                    <!--<br />If you want to add this company to your follow list, please click here.-->
+                                    <button id="follow-btn" class="btn active"> Follow</button>
+                                </div>
+                            {% else %}
+                                <div id="follow">
+                                    <!--<br />If you want to add this company to your follow list, please click here.-->
+                                    <button id="follow-btn" class="btn active"> Follow</button>
+                                </div>
+                                <div id="unfollow" class="hidden">
+                                    <!--<br />If you want to remove this company from your follow list, please click here.-->
+                                    <button id="unfollow-btn" class="btn active">Unfollow</button>
+                                </div>
+                            {% endif %}
+                        </div>
+                    {% else %}
+                        <p>If you want to add this company to your follow list, please log in.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div id="ButtonContainer1" class="button-container">
+            <button class="btn active" onclick="showInfo('General')"> General</button>
+            <button class="btn" onclick="showInfo('Contact')"> Contact</button>
+        </div>
+        <div class="company-info">
+            <div id="company-info" class="centered-text">
+                {% include "partials/company_description_form.html" %}
+            </div>
+            <div id="company-contact" class="company-contact centered-text hidden">
+                {% include "partials/company_contact_form.html" %}
+            </div>
+        </div>
+        <div class="linked-companies">
+            <h2 class="link-title">Linked companies</h2>
+            <div class="slider">
+                {% if linked_companies %}
+                    {% for company in linked_companies %}
+                        <p class="linked-comp-text">
+                            <a class="link-text" href="{% url 'company_page' %}?company={{ company.2 }}"><span class="link-text-smaller">({{ company.0 }})</span>&nbsp;&nbsp;{{ company.1 }}</a>
+                        </p>
+                    {% endfor %}
+                {% else %}
+                    No linked companies available.
+                {% endif %}
+            </div>
+        </div>
+        <div id="info_body" class="info_body">
+            <div id="info_tabs" class="info_tabs">
+
+            </div>
+            <div class="financial-widgets">
+                <div class="w-100">
+                    <select class="widget-option-selector-data" onchange="fetchWidget('widget-container-cp1', 'cp1', 'line_graph', '{{ company_details.name_lower }}', this.value)">
+                        <option value="None">Select Data</option>
+                        {% for id, name in options_dic_data.items %}
+                            <option value="{{ id }}">{{ name }}</option>
+                        {% endfor %}
+                    </select>
+                    <div id="widget-container-cp1" class="widget-container-cp1 w-100">
+                    </div>
+                </div>
+                <div class="w-100">
+                    <select class="widget-option-selector-data" onchange="fetchWidget('widget-container-cp2', 'cp2', 'bar_graph', '{{ company_details.name_lower }}', this.value)">
+                        <option value="None">Select Data</option>
+                        {% for id, name in options_dic_data.items %}
+                            <option value="{{ id }}">{{ name }}</option>
+                        {% endfor %}
+                    </select>
+                    <div id="widget-container-cp2" class="widget-container-cp2 w-100">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="sidebar">
+        <div id="ButtonContainer2" class="button-container">
+            <button class="btn active" onclick="showInfo('Events')"> Events</button>
+            <button class="btn" onclick="showInfo('Vacancies')"> Vacancies</button>
+            <button class="btn" onclick="showInfo('Projects')"> Projects</button>
+        </div>
+        <div id="sidebar_tabs" class="sidebar_tabs">
+            <div id="company-events" class="centered-text">
+                <div class="admin-button">
+                    <div class="add-button">
+                        <button class="btn active">Add Event</button>
+                    </div>
+                </div>
+
+                {% if events %}
+                    {% for event in events %}
+                        <div class="list-item">
+                            <div class="event-date">
+                                <div class="event-weekday">
+                                    {{ event.weekday }}
+                                </div>
+                                <div class="event-day-and-month">
+                                    <div class="event-day">
+                                        {{ event.day }}
+                                    </div>
+                                    <div class="event-month">
+                                        {{ event.month }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="event-title">
+                                <div class="event-company">
+                                    {{ event.company }}
+                                </div>
+                                <div class="event-title">
+                                    {{ event.title }}
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    No events available.
+                {% endif %}
+            </div>
+            <div id="company-vacancies" class="centered-text hidden">
+                <div class="admin-button">
+                    <div class="add-button">
+                        <button class="btn active">Add vacancy</button>
+                    </div>
+                </div>
+
+                {% if vacancies %}
+                    {% for vacancy in vacancies %}
+                        <div class="list-item">
+                            <div class="vacancy-title">
+                                {{ vacancy.title }}
+                            </div>
+                            <div class="event-title">
+                                <div class="event-company">
+                                    {{ vacancy.company }}
+                                </div>
+                                <div class="event-title">
+                                    {{ vacancy.duration }}
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    No vacancies available.
+                {% endif %}
+            </div>
+            <div id="company-projects" class="centered-text hidden">
+                <div class="admin-button">
+                    <div class="add-button">
+                        <p>Publications can also be uploaded.</p>
+                        <button class="btn active">Add project</button>
+                    </div>
+                </div>
+
+                {% if projects %}
+                    {% for project in projects %}
+                        <div class="list-item">
+                            <div class="vacancy-title">
+                                {{ project.title }}
+                            </div>
+                            <div class="event-title">
+                                <div class="event-company">
+                                    {{ project.company }}
+                                </div>
+                                <div class="project-type">
+                                    {{ project.type }}
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    No projects or publications available.
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+<script type="module">
+    // Import dashboardGrid from dashboard.js
+    import {dashboardGrid} from "{% static 'dashboard/js/dashboard.js' %}";
+
+    window.loadWidget = dashboardGrid.loadWidget;
+</script>
+
+<script>
+
+    // Add active class to the current button (highlight it)
+    var btnContainer1 = document.getElementById('ButtonContainer1');
+    var btns1 = btnContainer1.getElementsByClassName("btn");
+    for (var i = 0; i < btns1.length; i++) {
+        btns1[i].addEventListener("click", function(){
+            var current = btnContainer1.getElementsByClassName("active");
+            current[0].className = current[0].className.replace(" active", "");
+            this.className += " active";
+        });
+    }
+
+    var btnContainer2 = document.getElementById('ButtonContainer2');
+    var btns2 = btnContainer2.getElementsByClassName("btn");
+    for (var i = 0; i < btns2.length; i++) {
+        btns2[i].addEventListener("click", function(){
+            var current = btnContainer2.getElementsByClassName("active");
+            current[0].className = current[0].className.replace(" active", "");
+            this.className += " active";
+        });
+    }
+
+    // Logo doesn't exist
+    function logoExistsNot() {
+        document.getElementById('logo').style.display = 'none';
+    }
+
+    function fetchWidget(widgetDivId, widgetId, graph_type, company, data_type) {
+        //console.log(options_dic_data.items)
+        document.getElementById(widgetDivId).innerHTML = `<div style='height:200px;' id='${widgetDivId}-spinner'></div>`
+        showSpinner(`${widgetDivId}-spinner`);
+        let w = {widget_div_id: widgetDivId, widget_id: widgetId, type: graph_type, options: company, options_data: data_type};
+        loadWidget(w)
+    }
+
+    function showInfo(type) {
+        if (type == "General") {
+            $("#company-info").removeClass("hidden");
+            $("#company-contact").addClass("hidden");
+        } else if (type == "Contact") {
+            $("#company-contact").removeClass("hidden");
+            $("#company-info").addClass("hidden");
+        } else if (type == "Events") {
+            $("#company-events").removeClass("hidden");
+            $("#company-vacancies").addClass("hidden");
+            $("#company-projects").addClass("hidden");
+        } else if (type == "Vacancies") {
+            $("#company-vacancies").removeClass("hidden");
+            $("#company-events").addClass("hidden");
+            $("#company-projects").addClass("hidden");
+        } else if (type == "Projects") {
+            $("#company-projects").removeClass("hidden");
+            $("#company-events").addClass("hidden");
+            $("#company-vacancies").addClass("hidden");
+        }
+    }
+
+</script>
+
+{% endblock content %}

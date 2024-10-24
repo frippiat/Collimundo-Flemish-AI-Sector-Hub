@@ -1,0 +1,30 @@
+{% load static %}
+
+<div id="search-overlay">
+    <div id="header-ghost"></div>
+    <div id="search-engine-container">
+        <div id="results-wrapper">
+            <div id="results-container">
+            </div>
+        </div>
+    </div>
+    <div id="footer-ghost"></div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        searchPlaceholders = {{ SEARCH_BAR_TEXT|safe }};
+        initSearchBar(20, 100);
+        window.COMPANY_PAGE_URL = "{% url 'company_page' %}";
+    });
+</script>
+
+<script type="module">
+    import {sendSearchRequest} from "{% static 'dashboard/js/POST_search.js' %}"
+    import {sendThumbsVoting} from "{% static 'dashboard/js/POST_thumbs.js' %}"
+    document.addEventListener('DOMContentLoaded', function() {
+        window.sendSearchRequest = sendSearchRequest;
+        window.sendThumbsVoting = sendThumbsVoting;
+        window.SEARCH_REQUEST_ID = "{{ SEARCH_REQUEST_ID }}";
+    });
+</script>

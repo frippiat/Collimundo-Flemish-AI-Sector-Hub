@@ -1,0 +1,164 @@
+{% load static %}
+
+<!-- Search bar -->
+<div class="col-8 d-flex justify-content-center align-items-center position-absolute w-100">
+    <div style="position: relative;">
+        <form id="search-bar" class="form-inline">
+            <input id="search-input" class="form-control mr-sm-2" type="search" placeholder="Find new opportunities" aria-label="Search"/>
+        </form>
+        <div class="search-icon-container">
+            <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 79 79" fill="none">
+                <path d="M73 67C74.5 68.5 75 71 73 73C71 75 68.5 74.5 67 73L51.5 57.5C53 57 54 56 55 55C56 54 57 53 57.5 51.5L73 67Z" fill="var(--accent-color)"/>
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M32.5 60C47.6878 60 60 47.6878 60 32.5C60 17.3122 47.6878 5 32.5 5C17.3122 5 5 17.3122 5 32.5C5 47.6878 17.3122 60 32.5 60ZM32.5 54.4955C44.6503 54.4955 54.5 44.6458 54.5 32.4955C54.5 20.3453 44.6503 10.4955 32.5 10.4955C20.3497 10.4955 10.5 20.3453 10.5 32.4955C10.5 44.6458 20.3497 54.4955 32.5 54.4955Z" fill="var(--accent-color)"/>
+            </svg>
+        </div>
+        <!-- Search toggle (companies <-> vacancies) -->
+        <div id="search-toggle-box"><!-- class="collapse"> -->
+            <div class="search-toggle-container">
+                <div class="search-toggle-form form-check form-switch">
+                    <div class="has-tool-tip">
+                    <!-- <div> -->
+                        <span class="tooltiptext">companies</span>
+                        <svg class="search-toggle-svg" id="search-toggle-companies" xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 150 150" fill="none">
+                            <path fill="var(--accent-color)" d="M46.4201 103.169C43.6982 104.264 45.3314 108.1 48.0533 107.004L55.6746 104.264C58.3964 103.169 56.7633 99.3333 54.0414 100.429L46.4201 103.169Z"/>
+                            <path fill-rule="evenodd" fill="var(--accent-color)" clip-rule="evenodd" d="M48.0533 107.004C45.3314 108.1 43.6982 104.264 46.4201 103.169L54.0414 100.429C56.7633 99.3333 58.3964 103.169 55.6746 104.264L48.0533 107.004Z"/>
+                            <path fill-rule="evenodd" fill="var(--accent-color)" clip-rule="evenodd" d="M29 112.483V34.1341C29 31.3946 30.6331 29.2031 32.8107 28.1073L44.787 23.7241V10.0268C44.787 6.73946 48.0533 4 51.3195 4C54.5858 4 58.3964 6.73946 58.3964 10.0268V19.341L93.2367 7.28736C94.8698 6.73946 97.0473 6.73946 97.5917 7.28736L118.278 27.5594C119.911 29.2031 121 31.3946 121 33.0383V139.877L99.7692 147H29V143.165V133.303V128.92V116.318V112.483ZM116.101 33.287V136.59L98.1361 142.617V133.303V128.92V73.0345V68.6513V13.8621L114.467 29.751C115.556 30.8467 116.101 31.9425 116.101 33.287ZM93.7811 23.7241V12.2184L35.5325 31.9425C33.8994 32.4904 33.355 33.5862 33.355 35.2299V142.617H44.787V125.632C44.787 123.441 45.8757 122.345 49.142 121.249L70.3728 115.222C72.5503 114.674 74.7278 116.866 74.7278 119.057V142.617H93.7811V91.6628L66.0178 100.977C63.2959 102.073 61.6627 98.2375 64.3846 97.1417L93.7811 87.2797V75.7739L48.0533 91.6628C45.3314 92.7586 43.6982 88.3755 46.4201 87.2797L93.7811 71.3908V59.885L48.0533 75.7739C45.3314 76.8697 43.6982 72.4866 46.4201 71.3908L93.7811 55.5019V43.9962L48.0533 59.885C45.3314 60.9808 43.6982 56.5977 46.4201 55.5019L93.7811 39.613V28.1073L48.0533 43.9962C45.3314 45.0919 43.6982 40.7088 46.4201 39.613L93.7811 23.7241ZM49.142 10.0268V22.0805L54.0414 20.4368V10.0268C54.0414 7.28735 49.142 7.28736 49.142 10.0268ZM62.2071 142.617H70.3728V119.605L62.2071 121.797V142.617ZM49.142 142.617H57.3077V123.441L49.142 125.632V142.617Z"/>
+                        </svg>
+                        <!-- <svg class="search-toggle-svg" id="search-toggle-companies" xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 150 150" fill="none">
+                            <path fill-rule="evenodd" clip-rule="evenodd" fill="var(--accent-color)" d="M118.5 79H99C97.5 79 95.5 80.5 95.5 82V88C95.5 89.5 97.5 91 99 91H118.5C120 91 122 89.5 122 88V82C122 80.5 120 79 118.5 79ZM99.5 83H118V87H99.5V83Z"/>
+                            <path fill-rule="evenodd" clip-rule="evenodd" fill="var(--accent-color)" d="M118.5 94H99C97.5 94 95.5 95.5 95.5 97V103C95.5 104.5 97.5 106 99 106H118.5C120 106 122 104.5 122 103V97C122 95.5 120 94 118.5 94ZM99.5 98H118V102H99.5V98Z"/>
+                            <path fill-rule="evenodd" clip-rule="evenodd" fill="var(--accent-color)" d="M99 109.5C97.5 109.5 95.5 111 95.5 112.5V118.5C95.5 120 97.5 121.5 99 121.5H105C106.5 121.5 108.5 120 108.5 118.5V112.5C108.5 111 106.5 109.5 105 109.5H99ZM99.5 117.5V113.5H104.5V117.5H99.5Z"/>
+                            <path fill-rule="evenodd" clip-rule="evenodd" fill="var(--accent-color)" d="M111 63C111 65 106.5 65 106.5 63V37.727C106.5 36.5 106 35.5 105 34.5L90 20V70H124.726C128.5 70 131.5 72.5 131.5 76V110H136C141 110 147 117 147 122V137C147 139.5 145 141.5 142.5 141.5H14.5C12.5 141.5 10.5 139 10.5 137V125C10.5 116.904 18.5 110 26.5 110V38.5C26.5 36 28 34 30 33L41 29V16.5C41 13.5 44 11 47 11C50 11 53.5 13.5 53.5 16.5V25L85.5 14C87 13.5 89 13.5 89.5 14L108.5 32.5C110 34 111 36 111 37.5V63ZM86 29V18.5L32.5 36.5C31 37 30.5 38 30.5 39.5V137.5H41V122C41 120 42 119 45 118L64.5 112.5C66.5 112 68.5 114 68.5 116V137.5H86V91L60.5 99.5C58 100.5 56.5 97 59 96L86 87V76.5L44 91C41.5 92 40 88 42.5 87L86 72.5V62L44 76.5C41.5 77.5 40 73.5 42.5 72.5L86 58V47.5L44 62C41.5 63 40 59 42.5 58L86 43.5V33L44 47.5C41.5 48.5 40 44.5 42.5 43.5L86 29ZM45 16.5V27.5L49.5 26V16.5C49.5 14 45 14 45 16.5ZM57 137.5H64.5V116.5L57 118.5V137.5ZM45 137.5H52.5V120L45 122V137.5ZM14 125H26.5V113.5C21 113.5 14 120 14 125ZM14 137V129H26.5V138H15C15 138 14 138 14 137ZM127.5 76.5V111C125 111 119.5 116 119.5 121V125H90V74H124.726C126 74 127.5 75.5 127.5 76.5ZM131.5 114H135C138.5 114 143 118.5 143 122V125H123.5V122C123.5 118.5 128 114 131.5 114ZM143 129H123.5V137.5H142C142 137.5 143 137.5 143 136.5V129ZM119.5 137.5V129H90V137.5H119.5Z"/>
+                            <path fill="var(--accent-color)" d="M42.5 101.5C40 102.5 41.5 106 44 105L51 102.5C53.5 101.5 52 98 49.5 99L42.5 101.5Z"/>
+                        </svg> -->
+                    </div>
+                    <input class="search-toggle-checkbox form-check-input"  id="search-toggle-checkbox" type="checkbox" role="switch" data-on-text="vacancies" data-off-text="companies">
+                    <div class="has-tool-tip">
+                    <!-- <div> -->
+                        <span class="tooltiptext">vacancies</span>
+                        <svg class="search-toggle-svg" id="search-toggle-vacancies" xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 150 150" fill="none">
+                            <path fill="var(--accent-color)" d="M79.4537 63.8912C76.9768 63.8912 76.9768 59.9414 79.4537 59.9414H96.2963C98.7731 59.9414 98.7731 63.8912 96.2963 63.8912H79.4537Z"/>
+                            <path fill="var(--accent-color)" d="M79.4537 49.0795C76.9768 49.0795 76.9768 45.1297 79.4537 45.1297H113.634C116.111 45.1297 116.111 49.0795 113.634 49.0795H79.4537Z"/>
+                            <path fill="var(--accent-color)" d="M79.4537 34.7615C76.9768 34.7615 76.9768 30.8117 79.4537 30.8117H113.634C116.111 30.8117 116.111 34.7615 113.634 34.7615H79.4537Z"/>
+                            <path fill="var(--accent-color)" d="M35.3657 78.2092C32.8889 78.2092 32.8889 74.2594 35.3657 74.2594H73.0139C75.4907 74.2594 75.4907 78.2092 73.0139 78.2092H35.3657Z"/>
+                            <path fill="var(--accent-color)" d="M35.8611 92.0335C33.3843 92.0335 33.3843 88.0837 35.8611 88.0837H110.662C113.139 88.0837 113.139 92.0335 110.662 92.0335H35.8611Z"/>
+                            <path fill="var(--accent-color)" d="M35.8611 106.351C33.3843 106.351 33.3843 102.402 35.8611 102.402H112.148C114.625 102.402 114.625 106.351 112.148 106.351H35.8611Z"/>
+                            <path fill="var(--accent-color)" d="M79.4537 120.669H35.3657C32.8889 120.669 32.8889 116.72 35.3657 116.72H79.4537C81.9306 116.72 81.9306 120.669 79.4537 120.669Z"/>
+                            <path fill-rule="evenodd" clip-rule="evenodd"fill="var(--accent-color)" d="M37.8426 64.3849C37.8426 56.4854 42.2109 50.5607 50.7222 50.5607C59.2336 50.5607 63.6019 56.4854 63.6019 64.3849C63.6019 66.3598 68.0602 66.3598 68.0602 64.3849C68.0602 52.5356 57.6574 48.092 57.6574 48.092C59.6389 46.1172 61.6204 43.1548 61.6204 39.6987C61.6204 34.7615 57.162 29.3305 50.7222 29.3305C44.2824 29.3305 39.8241 34.7615 39.8241 39.6987C39.8241 43.1548 41.8056 46.1172 43.787 48.092C43.787 48.092 33.3843 52.5356 33.3843 64.3849C33.3843 66.3598 37.8426 66.3598 37.8426 64.3849ZM44.2824 39.6987C44.2824 36.2427 47.2546 33.2803 50.7222 33.2803C54.1898 33.2803 57.162 36.2427 57.162 39.6987C57.162 43.1548 54.1898 46.1172 50.7222 46.1172C47.2546 46.1172 44.2824 43.1548 44.2824 39.6987Z"/>
+                            <path fill-rule="evenodd" clip-rule="evenodd"fill="var(--accent-color)" d="M128 75.7406V21.9247C128 18.9623 125.028 16 122.056 16H26.9444C23.9722 16 21 18.9623 21 21.9247V128.075C21 131.038 23.9722 134 26.9444 134H122.056C125.028 134 128 131.038 128 128.075V75.7406ZM122.056 130.05C123.046 130.05 124.037 129.063 124.037 128.075V71.7908V21.9247C124.037 20.9372 123.046 19.9498 122.056 19.9498H26.9444C25.9537 19.9498 24.963 20.9372 24.963 21.9247V128.075C24.963 129.063 25.9537 130.05 26.9444 130.05H122.056Z"/>
+                        </svg>
+                        <!-- <svg class="search-toggle-svg" id="search-toggle-vacancies" xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 150 150" fill="none">
+                            <path fill-rule="evenodd" clip-rule="evenodd" fill="var(--accent-color)" d="M99 117C110.5 117 119.5 107.5 119.5 95.5C119.5 83.5 109.5 75.5 99 75.5C88.5 75.5 78.5 83.1356 78.5 95.5C78.5 107.864 87.5 117 99 117ZM115.5 95.7174C115.5 105.5 108.5 112.5 99 112.5C89.5 112.5 82.5 105.435 82.5 95.7174C82.5 86 90.5 80 99 80C107.5 80 115.5 85.9348 115.5 95.7174Z"/>
+                            <path fill-rule="evenodd" clip-rule="evenodd" fill="var(--accent-color)" d="M120.5 77.5V23C120.5 20 117.5 17 114.5 17H18.5C15.5 17 12.5 20 12.5 23V130.5C12.5 133.5 15.5 136.5 18.5 136.5H114.5C117.5 136.5 120.5 133.5 120.5 130.5V128L131.5 139C138 145 148.5 135 142 129L124 111C130 99.5 128.5 86 120.5 77.5ZM116.5 130.5V124.5L113 121C103 127.5 91.5 125.5 82 119C67.5 108.5 67 84.5 82 73.5C93.5 66 104.5 65.5 116.5 73.5V23C116.5 22 115.5 21 114.5 21H18.5C17.5 21 16.5 22 16.5 23V130.5C16.5 131.5 17.5 132.5 18.5 132.5H114.5C115.5 132.5 116.5 131.5 116.5 130.5ZM123.5 95.5C123 110 112.5 121 99 120.5C85.5 120 75 109.808 75 95.5C75 81.1915 87 72 99 72C111 72 124 81 123.5 95.5ZM121.5 114C120.5 115.5 118.5 117.5 116.5 118.5L134 136C137 139 142 134 139 131L121.5 114Z"/>
+                            <path fill="var(--accent-color)" d="M71.5 65.5C69 65.5 69 61.5 71.5 61.5H88.5C91 61.5 91 65.5 88.5 65.5H71.5Z"/>
+                            <path fill="var(--accent-color)" d="M71.5 50.5C69 50.5 69 46.5 71.5 46.5H106C108.5 46.5 108.5 50.5 106 50.5H71.5Z"/>
+                            <path fill="var(--accent-color)" d="M71.5 36C69 36 69 32 71.5 32H106C108.5 32 108.5 36 106 36H71.5Z"/>
+                            <path fill="var(--accent-color)" d="M27 80C24.5 80 24.5 76 27 76H68.5C71 76 71 80 68.5 80H27Z"/>
+                            <path fill="var(--accent-color)" d="M27.5 94C25 94 25 90 27.5 90H63.5C66 90 66 94 63.5 94H27.5Z"/>
+                            <path fill="var(--accent-color)" d="M27.5 108.5C25 108.5 25 104.5 27.5 104.5H65C67.5 104.5 67.5 108.5 65 108.5H27.5Z"/>
+                            <path fill="var(--accent-color)" d="M71.5 123H27C24.5 123 24.5 119 27 119H71.5C74 119 74 123 71.5 123Z"/>
+                            <path fill-rule="evenodd" clip-rule="evenodd" fill="var(--accent-color)" d="M29.5 66C29.5 58 33.9091 52 42.5 52C51.0909 52 55.5 58 55.5 66C55.5 68 60 68 60 66C60 54 49.5 49.5 49.5 49.5C51.5 47.5 53.5 44.5 53.5 41C53.5 36 49 30.5 42.5 30.5C36 30.5 31.5 36 31.5 41C31.5 44.5 33.5 47.5 35.5 49.5C35.5 49.5 25 54 25 66C25 68 29.5 68 29.5 66ZM36 41C36 37.5 39 34.5 42.5 34.5C46 34.5 49 37.5 49 41C49 44.5 46 47.5 42.5 47.5C39 47.5 36 44.5 36 41Z"/>
+                        </svg> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            $(document).ready(function() {
+                const $checkbox = $('#search-toggle-checkbox');
+                const $companies = $('#search-toggle-companies');
+                const $vacancies = $('#search-toggle-vacancies');
+                const $textBox = $('#search-toggle-text');
+                const $companyFilters = $('#search-filters-companies');
+                const $vacancyFilters = $('#search-filters-vancancies');
+
+                function updateCheckboxState() {
+                    if ($checkbox.prop('checked')) {
+                        // $textBox.text($checkbox.data('on-text'));
+                        $companyFilters.addClass("hidden");
+                        $vacancyFilters.removeClass("hidden");
+                    } else {
+                        // $textBox.text($checkbox.data('off-text'));
+                        $vacancyFilters.addClass("hidden");
+                        $companyFilters.removeClass("hidden");
+                    }
+                }
+                
+                updateCheckboxState();
+
+                $companies.on('click', function() {
+                    $checkbox.prop('checked', false);
+                    updateCheckboxState();
+                });
+                
+                $vacancies.on('click', function() {
+                    $checkbox.prop('checked', true);
+                    updateCheckboxState();
+                });
+
+                $checkbox.on('change', updateCheckboxState);
+            });
+        </script>
+        <style>
+            #search-toggle-box {
+                position: absolute;
+                top: 0px;
+                right: 100%;
+                height: 100%;
+                align-content: center;
+            }
+            .search-toggle-checkbox {
+                float: none !important;
+                margin: 0px 7px !important;
+                border-color: var(--accent-color) !important;
+                background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='rgba%28126, 217, 87%29'/%3e%3c/svg%3e") !important;
+                cursor: pointer;
+            }
+            
+            .search-toggle-checkbox:checked {
+                background-color: var(--accent-color);
+                background-image: var(--bs-form-switch-bg) !important;
+            }
+
+            .search-toggle-checkbox:focus,
+            .search-toggle-checkbox:active,
+            .search-toggle-checkbox:focus-visible {
+                box-shadow: none !important;
+            }
+            .search-toggle-checkbox::-moz-focus-inner {
+                box-shadow: none !important;
+            }
+
+            .search-toggle-form {
+                padding: 0px !important;
+                margin: 0px !important;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+            }
+            .search-toggle-container {  
+                display: flex;
+                flex-direction: row;
+
+                margin-right: 10px;
+            }
+            .search-toggle-svg {
+                height: 22px;
+                width: 22px;
+                cursor: pointer;
+            }
+        </style>
+        <div id="search-arrow-box" class="search-arrow-box d-flex flex-column justify-content-center align-items-center">
+            <img id="search-arrow" class="search-arrow" src="{% static 'images/icon/icon_arrow.png' %}" alt="arrow" width="20" height="20"/>
+        </div>
+        <style>
+            #search-arrow-box {
+                position: absolute;
+                top: 0px;
+                left: 100%;
+                height: 100%;
+                align-content: center;
+            }
+        </style>
+    </div>
+</div>

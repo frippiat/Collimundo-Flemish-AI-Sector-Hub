@@ -1,0 +1,54 @@
+{% extends "base_including_search.html" %}
+{% load static %}
+
+{% block title %}Dashboard{% endblock title %}
+
+{% block head %}
+
+<script src="{% static 'dashboard/js/dashboard.js' %}" type="module"></script>
+<link rel="stylesheet" href="{% static 'dashboard/style/dashboard.css' %}"/>
+<link rel="stylesheet" href="{% static 'dashboard/style/widget_grid.css' %}"/>
+<link rel="stylesheet" href="{% static 'dashboard/style/widget.css' %}"/>
+<!-- Utils -->
+<script src="{% static 'utils/cookies.js' %}"></script>
+<!-- Gridstack -->
+<script src="{% static 'gridstack/dist/gridstack-all.js' %}"></script>
+<link href="{% static 'gridstack/dist/gridstack.min.css' %}" rel="stylesheet"/>
+<link href="{% static 'gridstack/dist/gridstack-extra.min.css' %}" rel="stylesheet"/>
+<!-- Plotly -->
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+{% endblock head %}
+
+{% block overlay %}
+{% include "search_engine_body.html" %}
+{% endblock overlay %}
+
+{% block extra-buttons %}
+
+<!-- Edit dashboard button -->
+<li class="nav-item">
+    <a class="nav-link" id="edit-dashboard-button" href="{% url 'dashboard_editor' %}">Edit dashboard</a>
+</li>
+
+{% endblock extra-buttons %}
+
+{% block content %}
+
+<div id="widget-grid-container" class="d-flex align-items-center justify-content-center flex-column w-100">
+    <div id="dashboard-selection" class="d-flex flex-row align-items-center">
+    </div>
+    <div id="dashboard-grids" class="w-100">
+    </div>
+</div>
+
+<script type="module">
+    import {dashboardGrid} from "{% static 'dashboard/js/dashboard.js' %}"
+
+    document.addEventListener('DOMContentLoaded', function() {
+        var dashboard = new dashboardGrid({{ dashboards|safe }});
+        window.changeWidgetOption = dashboard.changeOption.bind(dashboard);
+    });
+</script>
+
+{% endblock content %}

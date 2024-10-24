@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Dashboard{% endblock title %}
+
+{% block head %}
+
+<script src="{% static 'dashboard/js/dashboard_editor.js' %}" type="module"></script>
+<link rel="stylesheet" href="{% static 'dashboard/style/dashboard_editor.css' %}"/>
+<link rel="stylesheet" href="{% static 'dashboard/style/widget_grid.css' %}"/>
+<link rel="stylesheet" href="{% static 'dashboard/style/widget.css' %}"/>
+<!-- Utils -->
+<script src="{% static 'utils/cookies.js' %}"></script>
+<!-- Gridstack -->
+<script src="{% static 'gridstack/dist/gridstack-all.js' %}"></script>
+<link href="{% static 'gridstack/dist/gridstack.min.css' %}" rel="stylesheet"/>
+<link href="{% static 'gridstack/dist/gridstack-extra.min.css' %}" rel="stylesheet"/>
+
+{% endblock head %}
+
+{% block buttons-header %}
+
+<!-- Edit dashboard button -->
+<li class="nav-item">
+    <a class="nav-link" id="return-button" href="{% url 'dashboard' %}">Stop editing</a>
+</li>
+
+{% endblock buttons-header %}
+
+{% block content %}
+
+<div id="garbage-can">
+    <svg id="garbage-can-svg" xmlns="http://www.w3.org/2000/svg" width="123" height="136" viewBox="0 0 123 136" fill="none">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M30.0859 77.0793C30.0396 76.4976 30.4992 76 31.0827 76H90.4173C91.0008 76 91.4604 76.4976 91.4141 77.0793L88 120C87.5 126 85.5 129.5 79.5 129.5H41.5C36 129.5 34 126 33.5 120L30.0859 77.0793ZM58.5 117.5V83C58.5 80.5 63 80.5 63 83V117.5C63 120 58.5 120 58.5 117.5ZM73 117.5V83C73 80.5 77.5 80.5 77.5 83V117.5C77.5 120 73 120 73 117.5ZM44 117.5V83C44 80.5 48.5 80.5 48.5 83V117.5C48.5 120 44 120 44 117.5Z" fill="var(--darker-accent-color)"/>
+        <path id="garbage-can-lid" fill-rule="evenodd" clip-rule="evenodd" d="M28.5 71H94C95.5 71 97.5 70 97.5 68V63.5C97.5 61 95 56.5 90 56.5H76.7004V56.5C76.2799 56.5 75.9043 56.2369 75.7606 55.8417V55.8417L74 51C73.5 49.5 71.5 47 67.5 47H55C51.4 47 49 49.6667 48.5 51L46.7394 55.8417V55.8417C46.5957 56.2369 46.2201 56.5 45.7996 56.5V56.5H32.5C27.5 56.5 25 61 25 63.5V68C25 70 27 71 28.5 71ZM70.439 55.503C70.5032 56.0516 70.0523 56.5 69.5 56.5H53C52.4477 56.5 51.9962 56.0503 52.0734 55.5035C52.3373 53.635 53.3128 51.5 55 51.5H67.5C69.4817 51.5 70.2361 53.7726 70.439 55.503Z" fill="var(--darker-accent-color)"/>
+    </svg>
+</div>
+
+<div class="d-flex flex-row justify-content-center align-items-center" id="main-container">
+    <div class="d-flex align-items-center justify-content-center" id="mini-dashboard-container">
+        <div>
+            <div id="dashboard-selection" class="d-flex flex-row align-items-center">
+            </div>
+            <div id="dashboard-grids" class="w-100 with-border">
+            </div>
+        </div>
+    </div>
+    <div class="d-flex flex-column overflow-x-auto" id="widget-library">
+    </div>
+</div>
+
+
+<script type="module">
+    import {dashboardEditorGrid} from "{% static 'dashboard/js/dashboard_editor.js' %}"
+
+    window.widgetImagePath = "{% static 'images/widget_preview/' %}";
+
+    document.addEventListener('DOMContentLoaded', function() {
+        var dashboard = new dashboardEditorGrid({{ dashboards|safe }});
+    });
+</script>
+
+<style>
+
+</style>
+
+{% endblock content %}
