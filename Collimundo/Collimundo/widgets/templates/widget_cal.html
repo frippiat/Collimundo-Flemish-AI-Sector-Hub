@@ -1,0 +1,81 @@
+{% extends "widget_base.html" %}
+
+{% block widget_type %}cal{% endblock widget_type %}
+{% block default_id %}Calendar{% endblock default_id %}
+{% block default_text %}Calendar{% endblock default_text %}
+<!--
+    Leave the block option_selector empty to not include a selector
+-->
+{% block option_selector %}{% endblock option_selector %}
+{% block option_selector_data %}{% endblock option_selector_data %}
+
+{% block content %}
+<div id="{{ unique_widget_id | safe }}">
+    <div class="container">
+        <h3>Events</h3>
+        {% if events %}
+            {% for event in events %}
+                <div class="list-item" onclick="openPopup('{{ unique_widget_id }}_{{ forloop.counter0 }}')">
+                    <div class="event-date">
+                        <div class="event-weekday">
+                            {{ event.weekday }}
+                        </div>
+                        <div class="event-day">
+                            {{ event.day }}
+                        </div>
+                        <div class="event-month">
+                            {{ event.month }}
+                        </div>
+                    </div>
+                    <div class="event-title">
+                        <div class="event-company">
+                            {{ event.company }}
+                        </div>
+                        <div class="event-title">
+                            {{ event.title }}
+                        </div>
+                    </div>
+                    <div class="popup-overlay" id="popup-{{ unique_widget_id }}_{{ forloop.counter0 }}">
+                        <div class="popup-content">
+                            <span class="close-btn" data-popup-id="popup-{{ unique_widget_id }}_{{ forloop.counter0 }}">X</span>
+                            <h1>{{ event.title }}</h1>
+                            <p>{{ event.day }} {{ event.month }} {{ event.year }}</p>
+                            <p>{{ event.description }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            No events available.
+        {% endif %}
+    </div>
+</div>
+
+<script>
+    // Event Pop up
+    function openPopup(index) {
+        var popup = document.getElementById('popup-' + index);
+        popup.style.display = 'flex';
+    }
+
+    // Close popup when close button is clicked
+    document.addEventListener('click', function(event) {
+        if (event.target.classList.contains('close-btn')) {
+            var popupId = event.target.getAttribute('data-popup-id');
+            closePopup(popupId);
+        }
+    });
+
+    function closePopup(popupId) {
+        var popup = document.getElementById(popupId);
+        popup.style.display = 'none';
+    }
+
+    // Close popup when clicking outside of it
+    window.onclick = function(event) {
+        if (event.target.classList.contains('popup-overlay')) {
+            event.target.style.display = "none";
+        } 
+    }
+</script>
+{% endblock content %}

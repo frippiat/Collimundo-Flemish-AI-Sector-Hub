@@ -1,0 +1,14 @@
+<form method="post">
+    {% csrf_token %}
+    <div>
+        <dt>Master</dt>
+        <dd class="col-md-8">
+            <input type="text" class="form-control" name="education_master" value="{{ profile.education_master }}"/>
+        </dd>
+        <dt>Bachelor</dt>
+        <dd class="col-md-8">
+            <input type="text" class="form-control" name="education_bachelor" value="{{ profile.education_bachelor }}"/>
+        </dd>
+        <button class="btn btn-outline-success" type="submit" name="education_button" value="1">save</button>
+    </div>
+</form>

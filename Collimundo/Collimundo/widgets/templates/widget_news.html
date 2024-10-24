@@ -1,0 +1,67 @@
+{% extends "widget_base.html" %}
+
+{% block widget_type %}news{% endblock widget_type %}
+{% block default_id %}News{% endblock default_id %}
+{% block default_text %}News{% endblock default_text %}
+<!--
+    Leave the block option_selector empty to not include a selector
+-->
+{% block option_selector %}{% endblock option_selector %}
+{% block option_selector_data %}{% endblock option_selector_data %}
+
+{% block content %}
+<div id="{{ unique_widget_id | safe }}" class="w-100 h-100 overflow-y-auto overflow-x-hidden position-relative">
+    <!-- <div class="w-100 h-100 z-1 position-absolute">
+        <div class="w-100 h-100 d-flex justify-content-center align-items-center">
+            <div class="spinner-border" role="status"style="color: var(--accent-color);">
+                <span class="sr-only"></span>
+            </div>
+        </div>
+    </div> -->
+    <!--4231-->
+    <!-- <iframe class="w-100 news-widget z-2 position-relative" height="4300" id="{{ unique_widget_id | safe }}-iframe" src="{{ news_url | safe }}{{ news_id | safe }}" frameborder="0"></iframe> -->
+    <div class="news-container">
+        {% for article in news_data %}
+        <div class="article-container">
+            <div class="article-img">
+                <a href="{{ article.URL }}" target="_blank">
+                    <img loading="lazy" referrerpolicy="no-referrer"
+                    src="{{ article.Image }}"
+                    alt="{{ article.Title }}"/>
+                </a>
+            </div>
+            <div class="article-body">
+                {% if article.Authors is not none or article.Time %}
+                <div class="article-header">
+                    {% if news_type == "vrt_news" %}
+                    <span>VRT</span>
+                        {% if article.Time %}
+                        <span class="article-split"></span>
+                        {% endif %}
+                    {% elif article.Authors is not none %}
+                    <span>{{ article.Authors }}</span>
+                        {% if article.Time %}
+                        <span class="article-split"></span>
+                        {% endif %}
+                    {% endif %}
+                    {% if article.Time %}
+                    <span class="article-time">
+                        {% if article.Time_h > 0 %}{{ article.Time_h }}h{% else %}{{ article.Time_m }}m{% endif %}
+                    </span>
+                    {% endif %}
+                </div>
+                {% else %}
+                <div class="article-padding">
+                </div>
+                {% endif %}
+                <div class="article-title">
+                    <h3 class="list-card-title">
+                        <a href="{{ article.URL }}" target="_blank"  title="{{ article.Title }}">{{ article.Title }}</a>
+                    </h3>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}

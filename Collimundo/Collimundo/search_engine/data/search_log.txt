@@ -1,0 +1,170 @@
+2024/04/17 22:01:40 : User input - i need to install internet-connected sensors and monitor their data
+2024/04/17 22:01:41 : Using hard coded query - ["g.V().has('actor','domain').has('name',within('Internet of Things','Data Analysis','Automation')).in()"]
+2024/04/17 22:01:41 : Syntax checked - ["g.V().has('actor','domain').has('name',within('Internet of Things','Data Analysis','Automation')).in().dedup()"]
+2024/04/17 22:01:42 : Final result - [{'id': 'www.polysense.ai', 'label': 'implementor', 'type': 'vertex', 'properties': {'description': [{'id': 'aa755ce5-c54b-4843-ba27-b007ba5db921', 'value': 'PolySense is a company that focuses on ena...
+2024/04/17 22:02:10 : User input - i need to install internet-connected sensors and monitor their data
+2024/04/17 22:02:11 : Using hard coded query - ["g.V().has('actor','domain').has('name',within('Internet of Things','Data Analysis','Automation')).in()"]
+2024/04/17 22:02:11 : Syntax checked - ["g.V().has('actor','domain').has('name',within('Internet of Things','Data Analysis','Automation')).in().dedup()"]
+2024/04/17 22:02:12 : Final result - [{'id': 'www.polysense.ai', 'label': 'implementor', 'type': 'vertex', 'properties': {'description': [{'id': 'aa755ce5-c54b-4843-ba27-b007ba5db921', 'value': 'PolySense is a company that focuses on ena...
+2024/04/17 22:04:43 : User input - i need to install internet-connected sensors and monitor their data
+2024/04/17 22:04:44 : Using hard coded query - ["g.V().has('actor','domain').has('name',within('Internet of Things','Data Analysis','Automation')).in()"]
+2024/04/17 22:04:45 : Syntax checked - ["g.V().has('actor','domain').has('name',within('Internet of Things','Data Analysis','Automation')).in().dedup()"]
+2024/04/17 22:04:46 : Final result - [{'id': 'www.polysense.ai', 'label': 'implementor', 'type': 'vertex', 'properties': {'description': [{'id': 'aa755ce5-c54b-4843-ba27-b007ba5db921', 'value': 'PolySense is a company that focuses on ena...
+2024/04/18 00:53:29 : User input - polysense
+2024/04/18 00:55:50 : User input - polysense
+2024/04/18 00:56:48 : User input - i need to install internet connected sensors and monitor their data
+2024/04/18 00:56:49 : Using hard coded query - ["g.V().has('actor','domain').has('name',within('Internet of Things','Data Analysis','Automation')).in()"]
+2024/04/18 00:56:51 : Syntax checked - ["g.V().has('actor','domain').has('name',within('Internet of Things','Data Analysis','Automation')).in().dedup()"]
+2024/04/18 00:56:52 : Final result - [{'id': 'www.polysense.ai', 'label': 'implementor', 'type': 'vertex', 'properties': {'description': [{'id': 'aa755ce5-c54b-4843-ba27-b007ba5db921', 'value': 'PolySense is a company that focuses on ena...
+2024/04/18 11:17:59 : User input - aesics
+2024/04/18 11:18:25 : User input - easics
+2024/04/18 11:20:12 : User input - easics
+2024/04/18 11:23:45 : User input - easics
+2024/04/18 11:30:45 : User input - easics
+2024/04/18 11:32:30 : User input - easics
+2024/04/18 11:32:58 : User input - easics
+2024/04/18 11:42:07 : User input - easics
+2024/04/18 11:42:25 : User input - i need neural processing units to use in healthcare
+2024/04/18 11:42:26 : Using hard coded query - ["g.V().has('actor','domain').has('name',within('Hardware','Embedded Systems','Healthcare')).in()"]
+2024/04/18 11:42:28 : Syntax checked - ["g.V().has('actor','domain').has('name',within('Hardware','Embedded Systems','Healthcare')).in().dedup()"]
+2024/04/18 11:42:28 : Final result - [{'id': 'www.easics.com', 'label': 'implementor', 'type': 'vertex', 'properties': {'actor': [{'id': 'www.easics.com|actor', 'value': 'implementor'}], 'website': [{'id': 'ce9434f3-6d38-424f-91f7-db169a...
+2024/04/18 11:50:05 : User input - easics
+2024/04/18 12:00:48 : User input - all investors
+2024/04/18 12:00:50 : GPT result - ['g.V().has("actor", "investor")']
+2024/04/18 12:00:50 : Syntax checked - ["g.V().has('actor', 'investor').dedup()"]
+2024/04/18 12:00:54 : Final result - [{'id': 'lrd.kuleuven.be', 'label': 'investor', 'type': 'vertex', 'properties': {'actor': [{'id': 'lrd.kuleuven.be|actor', 'value': 'investor'}], 'name': [{'id': 'a9cd807a-5333-4616-ba7d-0e16a4a512fe'...
+2024/04/18 12:03:24 : User input - who can help me with my waste
+2024/04/18 12:03:27 : GPT result - ['g.V().has("actor", "domain").has("name", within("Waste Management")).both()']
+2024/04/18 12:03:27 : Syntax checked - ["g.V().has('actor', 'domain').has('name_lower', within('waste management')).both().dedup()"]
+2024/04/18 12:03:28 : Final result - []...
+2024/04/18 12:05:28 : User input - i need neural processing units to use in healthcare
+2024/04/18 12:05:28 : Using hard coded query - ["g.V().has('actor','domain').has('name',within('Hardware','Embedded Systems','Healthcare')).in()"]
+2024/04/18 12:05:30 : Syntax checked - ["g.V().has('actor','domain').has('name',within('Hardware','Embedded Systems','Healthcare')).in().dedup()"]
+2024/04/18 12:05:31 : Final result - [{'id': 'www.easics.com', 'label': 'implementor', 'type': 'vertex', 'properties': {'actor': [{'id': 'www.easics.com|actor', 'value': 'implementor'}], 'website': [{'id': 'ce9434f3-6d38-424f-91f7-db169a...
+2024/04/18 12:19:47 : User input - i need neural processing units to use in healthcare
+2024/04/18 12:19:47 : Using hard coded query - ["g.V().has('actor','domain').has('name',within('Hardware','Embedded Systems','Healthcare')).in()"]
+2024/04/18 12:19:49 : Syntax checked - ["g.V().has('actor','domain').has('name',within('Hardware','Embedded Systems','Healthcare')).in().dedup()"]
+2024/04/18 12:19:51 : Final result - [{'id': 'www.easics.com', 'label': 'implementor', 'type': 'vertex', 'properties': {'actor': [{'id': 'www.easics.com|actor', 'value': 'implementor'}], 'website': [{'id': 'ce9434f3-6d38-424f-91f7-db169a...
+2024/04/18 12:21:25 : User input - i need neural processing units to use in healthcare
+2024/04/18 12:21:28 : Using hard coded query - ["g.V().has('actor','domain').has('name',within('Hardware','Embedded Systems','Healthcare')).in()"]
+2024/04/18 12:21:29 : Syntax checked - ["g.V().has('actor','domain').has('name',within('Hardware','Embedded Systems','Healthcare')).in().dedup()"]
+2024/04/18 12:21:31 : Final result - [{'id': 'www.easics.com', 'label': 'implementor', 'type': 'vertex', 'properties': {'actor': [{'id': 'www.easics.com|actor', 'value': 'implementor'}], 'website': [{'id': 'ce9434f3-6d38-424f-91f7-db169a...
+2024/04/18 12:24:14 : User input - I need neural processing units to use in healthcare
+2024/04/18 12:24:14 : Using hard coded query - ["g.V().has('actor','domain').has('name',within('Hardware','Embedded Systems','Healthcare')).in()"]
+2024/04/18 12:24:16 : Syntax checked - ["g.V().has('actor','domain').has('name',within('Hardware','Embedded Systems','Healthcare')).in().dedup()"]
+2024/04/18 12:24:18 : Final result - [{'id': 'www.easics.com', 'label': 'implementor', 'type': 'vertex', 'properties': {'actor': [{'id': 'www.easics.com|actor', 'value': 'implementor'}], 'website': [{'id': 'ce9434f3-6d38-424f-91f7-db169a...
+2024/04/18 12:25:46 : User input - Easics
+2024/04/18 12:36:46 : User input - I need neural processing units to use in healthcare
+2024/04/18 12:36:47 : Using hard coded query - ["g.V().has('actor','domain').has('name',within('Hardware','Embedded Systems','Healthcare')).in()"]
+2024/04/18 12:36:49 : Syntax checked - ["g.V().has('actor','domain').has('name',within('Hardware','Embedded Systems','Healthcare')).in().dedup()"]
+2024/04/18 12:36:50 : Final result - [{'id': 'www.easics.com', 'label': 'implementor', 'type': 'vertex', 'properties': {'actor': [{'id': 'www.easics.com|actor', 'value': 'implementor'}], 'website': [{'id': 'ce9434f3-6d38-424f-91f7-db169a...
+2024/04/18 12:38:54 : User input - Easics
+2024/04/18 14:02:58 : User input - dadadad
+2024/04/18 14:03:13 : User input - dadada
+2024/04/18 14:03:45 : User input - ddada
+2024/04/18 14:04:32 : User input - hr companies
+2024/04/18 14:04:33 : GPT result - ['g.V().has("actor", "domain").has("name", within("Human Resources", "Human Resources ")).both().has("actor", "implementor")']
+2024/04/18 14:04:33 : Syntax checked - ["g.V().has('actor', 'domain').has('name', within('Human Resources', 'Human Resources ')).both().has('actor', 'implementor').dedup()"]
+2024/04/18 14:04:34 : Final result - [{'id': 'techwolf.com', 'label': 'implementor', 'type': 'vertex', 'properties': {'website': [{'id': '5ee1bb59-8108-4a9f-98af-c9bb943db5a6', 'value': 'https://techwolf.com'}], 'name': [{'id': 'd3c77fef...
+2024/04/18 14:24:18 : User input - hr solutions
+2024/04/18 14:24:20 : GPT result - ['g.V().has("actor", "domain").has("name", within("Human Resources", "Talent Acquisition")).both("works_on").has("actor", "implementor")']
+2024/04/18 14:24:20 : Syntax checked - ["g.V().has('actor', 'domain').has('name', within('Human Resources', 'Talent Acquisition')).both('works_on').has('actor', 'implementor').dedup()"]
+2024/04/18 14:24:22 : Final result - [{'id': 'techwolf.com', 'label': 'implementor', 'type': 'vertex', 'properties': {'website': [{'id': '5ee1bb59-8108-4a9f-98af-c9bb943db5a6', 'value': 'https://techwolf.com'}], 'name': [{'id': 'd3c77fef...
+2024/04/18 14:32:54 : User input - Which companies did Fortino invest in?
+2024/04/18 14:32:56 : GPT result - ['g.V().has("actor", "investor").has("name_lower", "fortino").both("invests_in").has("actor", "implementor")']
+2024/04/18 14:32:56 : Syntax checked - ["g.V().has('actor', 'investor').has('name_lower', 'fortino').both('invests_in').has('actor', 'implementor').dedup()"]
+2024/04/18 14:32:58 : Final result - []...
+2024/04/18 14:33:15 : User input - Which companies did Stride invest in?
+2024/04/18 14:33:57 : GPT result - ['g.V().has("actor","investor").has("name_lower",containing("stride")).both("invests_in").has("actor","implementor")']
+2024/04/18 14:33:57 : Syntax checked - ["g.V().has('actor','investor').has('name_lower',containing('stride')).both('invests_in').has('actor','implementor').dedup()"]
+2024/04/18 14:33:58 : Final result - []...
+2024/04/18 14:34:27 : User input - Which company helps me find talent?
+2024/04/18 14:34:58 : GPT result - ['g.with("implementation","domain").has("name",within("Talent Acquisition")).both("works_on").has("actor", "implementor")']
+2024/04/18 14:34:58 : Syntax checked - ["g.with('implementation','domain').has('name',within('Talent Acquisition')).both('works_on').has('actor', 'implementor').dedup()"]
+2024/04/18 14:35:00 : Final result - ['S', 'o', 'm', 'e', 't', 'h', 'i', 'n', 'g', ' ', 'w', 'e', 'n', 't', ' ', 'w', 'r', 'o', 'n', 'g']...
+2024/04/18 14:41:10 : User input - talent searching
+2024/04/18 14:41:11 : GPT result - ['g.V().has("actor", "domain").has("name", within("Talent Acquisition", "Human Resources", "Employee Engagement")).both("works_on").has("actor", "implementor")']
+2024/04/18 14:41:12 : Syntax checked - ["g.V().has('actor', 'domain').has(within('Talent Acquisition', 'Human Resources', 'Employee Engagement')).both('works_on').has('actor', 'implementor').dedup()"]
+2024/04/18 14:41:14 : Final result - ['S', 'o', 'm', 'e', 't', 'h', 'i', 'n', 'g', ' ', 'w', 'e', 'n', 't', ' ', 'w', 'r', 'o', 'n', 'g']...
+2024/04/18 14:42:44 : User input - i want to find talen
+2024/04/18 14:42:46 : GPT result - ['g.V().has("actor", "domain").has("name", within("Human Resources")).both("works_on").has("actor", "implementor")']
+2024/04/18 14:42:46 : Syntax checked - ["g.V().has('actor', 'domain').has('name_lower', within('human resources')).both('works_on').has('actor', 'implementor').dedup()"]
+2024/04/18 14:42:49 : Final result - []...
+2024/04/18 14:43:25 : User input - i want to find talent
+2024/04/18 14:43:48 : GPT result - ['g.V().has("actor", "domain").has("name", within("Talent Acquisition")).both("works_on").has(\'actor\', \'implementor\')']
+2024/04/18 14:43:48 : Syntax checked - ["g.V().has('actor', 'domain').has('name_lower', within('talent acquisition')).both('works_on').has('actor', 'implementor').dedup()"]
+2024/04/18 14:43:50 : Final result - []...
+2024/04/18 14:45:59 : User input - optioryx
+2024/04/18 14:46:02 : GPT result - ['g.V().has("name_lower", "optioryx").both().has("actor", "implementor")']
+2024/04/18 14:46:02 : Syntax checked - ["g.V().has('name_lower', 'optioryx').both().has('actor', 'implementor').dedup()"]
+2024/04/18 14:46:04 : Final result - []...
+2024/04/18 14:46:16 : User input - techwolf
+2024/04/18 14:49:26 : User input - test
+2024/04/18 14:49:27 : GPT result - ['g.V()']
+2024/04/18 14:49:27 : Syntax checked - ['g.V().dedup()']
+2024/04/18 14:49:33 : Final result - [{'id': 'domain_Advertising', 'label': 'domain', 'type': 'vertex', 'properties': {'actor': [{'id': 'domain_Advertising|actor', 'value': 'domain'}], 'name': [{'id': '04a3b88a-71da-4170-bd8b-4d0d6f93bb0...
+2024/04/18 14:50:01 : User input - techwolf
+2024/04/18 14:55:46 : User input - I need to find talent for my company
+2024/04/18 15:00:19 : User input - techwolf
+2024/04/18 15:10:17 : User input - mauhn
+2024/04/18 15:11:09 : User input - arcnc
+2024/04/18 15:11:11 : GPT result - ['g.V().has("actor", "implementor").has("name_lower", "arcnc").both("employs").has("actor", "individual")']
+2024/04/18 15:11:11 : Syntax checked - ["g.V().has('actor', 'implementor').has('name_lower', 'arcnc').both('employs').has('actor', 'individual').dedup()"]
+2024/04/18 15:11:13 : Final result - []...
+2024/04/18 15:11:24 : User input - oqton
+2024/04/18 15:12:13 : GPT result - ['g.V().has("actor", "implementor").has("name_lower", "qont").both().has("actor", "individual")']
+2024/04/18 15:12:13 : Syntax checked - ["g.V().has('actor', 'implementor').has('name_lower', 'qont').both().has('actor', 'individual').dedup()"]
+2024/04/18 15:12:19 : Final result - []...
+2024/04/18 15:23:13 : User input - hack your future�
+2024/04/18 15:23:15 : GPT result - ['g.V().has("actor", "domain").has("name", within("Human Resources", "Non-profit")).both("works_on").has("actor", "implementor")']
+2024/04/18 15:23:15 : Syntax checked - ["g.V().has('actor', 'domain').has('name', within('Human Resources', 'Non-profit')).both('works_on').has('actor', 'implementor').dedup()"]
+2024/04/18 15:23:15 : User input - hack your future
+2024/04/18 15:23:16 : Final result - [{'id': 'techwolf.com', 'label': 'implementor', 'type': 'vertex', 'properties': {'website': [{'id': '5ee1bb59-8108-4a9f-98af-c9bb943db5a6', 'value': 'https://techwolf.com'}], 'name': [{'id': 'd3c77fef...
+2024/04/18 15:23:56 : User input - open knowledge
+2024/04/18 15:24:11 : User input - open knowledge belgium
+2024/04/18 15:42:54 : User input - porn
+2024/04/18 15:55:25 : User input - polysense
+2024/04/18 16:02:10 : User input - dealside
+2024/04/18 16:02:13 : GPT result - ['g.V().has("actor", "implementor").has("name_lower", "dealside").next()']
+2024/04/18 16:02:13 : Syntax checked - ["g.V().has('actor', 'implementor').has('name_lower', 'dealside').next().dedup()"]
+2024/04/18 16:02:16 : Final result - ['S', 'o', 'm', 'e', 't', 'h', 'i', 'n', 'g', ' ', 'w', 'e', 'n', 't', ' ', 'w', 'r', 'o', 'n', 'g']...
+2024/04/18 19:48:02 : User input - dadada
+2024/04/18 19:48:47 : User input - dadad
+2024/04/18 19:59:33 : User input - dada
+2024/04/18 20:00:55 : User input - dadad
+2024/04/18 20:03:39 : User input - dadada
+2024/04/18 20:20:01 : User input - dadada
+2024/04/18 20:22:50 : User input - dadad
+2024/04/18 21:19:52 : User input - mauhn
+2024/04/18 21:26:10 : User input - dadad
+2024/04/18 21:27:28 : User input - dadad
+2024/04/18 21:28:01 : User input - get companies in sustainability
+2024/04/21 20:40:05 : User input - techwolf
+2024/04/21 20:52:21 : User input - healthcare
+2024/04/21 20:54:01 : User input - easics
+2024/04/21 21:09:43 : User input - mauhn
+2024/04/21 21:56:41 : User input - arco
+2024/05/01 22:50:18 : 1 - User input - collimundotest
+2024/05/01 22:50:21 : 1 - User input - universitytest
+2024/05/01 22:50:24 : 1 - User input - Everything that has something to do with ai
+2024/05/01 22:50:27 : 1 - GPT result - ['g.V().has("actor", "domain").has("name", containing("AI")).both()']
+2024/05/01 22:50:27 : 1 - Syntax checked - ["g.V().has('actor', 'domain').has('name_lower', containing('ai')).both().dedup()"]
+2024/05/01 22:50:27 : 1 - Final result - [{'id': 'www.cornelistransport.be', 'label': 'implementor', 'type': 'vertex', 'properties': {'actor': [{'id': 'www.cornelistransport.be|actor', 'value': 'implementor'}], 'website': [{'id': 'cd66a034-4...
+2024/05/19 23:40:48 : 1 - User input - collimundotest
+2024/05/19 23:40:51 : 1 - User input - universitytest
+2024/05/19 23:40:54 : 1 - User input - All alumni companies from universitytest 
+2024/05/19 23:40:56 : 1 - GPT result - ['g.V().has("actor", "university").has("name_lower", containing("universitytest")).both("uni_alumni").has("actor", "implementor")']
+2024/05/19 23:40:56 : 1 - Syntax checked - ["g.V().has('actor', 'university').has('name_lower', containing('universitytest')).both('uni_alumni').has('actor', 'implementor').dedup()"]
+2024/05/19 23:40:57 : 1 - Final result - [{'id': 'CollimundoTest_company_adef0afa-1a73-40aa-a4eb-1c60e002ad86', 'label': 'implementor', 'type': 'vertex', 'properties': {'embedding': [{'id': 'ea705e1c-c926-46fb-a4b0-449c56d92c07', 'value': '[...
+2024/05/20 11:42:00 : 1 - User input - collimundotest
+2024/05/20 11:42:04 : 1 - User input - universitytest
+2024/05/20 11:42:07 : 1 - User input - All alumni companies from universitytest
+2024/05/20 11:42:09 : 1 - GPT result - ['g.V().has("actor", "university").has("name_lower", containing("universitytest")).both("uni_alumni").has("actor", "implementor")']
+2024/05/20 11:42:09 : 1 - Syntax checked - ["g.V().has('actor', 'university').has('name_lower', containing('universitytest')).both('uni_alumni').has('actor', 'implementor').dedup()"]
+2024/05/20 11:42:11 : 1 - Final result - [{'id': 'CollimundoTest_company_e25bdf6d-2ae7-4d60-9d41-477fe188b432', 'label': 'implementor', 'type': 'vertex', 'properties': {'embedding': [{'id': '7768ce6d-733d-4d33-ba57-cab58461fab2', 'value': '[...
+2024/05/20 12:10:32 : 1 - User input - collimundotest
+2024/05/20 12:10:35 : 1 - User input - universitytest
+2024/05/20 12:10:38 : 1 - User input - All alumni companies from universitytest
+2024/05/20 12:10:41 : 1 - GPT result - ['g.V().has("actor", "university").has("name_lower", containing("universitytest")).both("uni_alumni").has("actor", "implementor")']
+2024/05/20 12:10:41 : 1 - Syntax checked - ["g.V().has('actor', 'university').has('name_lower', containing('universitytest')).both('uni_alumni').has('actor', 'implementor').dedup()"]
+2024/05/20 12:10:45 : 1 - Final result - [{'id': 'CollimundoTest_company_e25bdf6d-2ae7-4d60-9d41-477fe188b432', 'label': 'implementor', 'type': 'vertex', 'properties': {'embedding': [{'id': '7768ce6d-733d-4d33-ba57-cab58461fab2', 'value': '[...

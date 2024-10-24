@@ -1,0 +1,215 @@
+Artificial intelligence$ g.V()
+
+Machine Learning$ g.V()
+
+AI companies$ g.V().has("actor","implementor")
+
+Machine learning companies$ g.V().has("actor","implementor")
+
+AI research groups$ g.V().has("actor","research")
+
+ML research$ g.V().has("actor","research")
+
+AI investments$ g.V().has("actor","investor")
+
+Machine learning investor$ g.V().has("actor","investor")
+
+AI education$ g.V().union(has("actor", "university").has("actor","research"))
+
+competitors of techwolf$ g.V().has("actor", "implementor").has("name_lower", "techwolf").out("works_on").in("works_on").has("actor", "implementor")
+
+Research groups at Ghent University$ g.V().has("actor","university").has("name_lower",containing("ghent")).in().has("actor","research")
+
+Education Ghent University$ g.V().union(has("actor","university").has("name_lower",containing("ghent")).in().has("actor","research").has("actor","university").has("name_lower",containing("ghent")))
+
+For which university does the VIB research group work?$ g.V().has("actor","research").has("name_lower",containing("vib")).out().has("actor","university")
+
+Research in nanobody$ g.V().has("actor","research").has("description",containing(" nanobody"))
+
+Investors in Mauhn$ g.V().has("name_lower", containing("mauhn")).in().has("actor","investor")
+
+Investments in  Mauhn$ g.V().has("name_lower", containing("mauhn")).in().has("actor","investor")
+
+Investment sectors of GIMV$ g.V().has("actor","investor").has("name_lower",containing("gimv")).out().has("actor","domain")
+
+Investments of GIMV$ g.V().has("actor","investor").has("name_lower",containing("gimv")).out().has("actor","implementor")
+
+Investors in the sustainability sector$ g.V().has("actor","domain").has("name",within("Sustainability")).in().has("actor","investor")
+
+Investors in mobilityTech$ g.V().has("actor","domain").has("name",within("Transport") ).in().has("actor","investor")
+
+ Kortrijk$ g.V().has('city', 'Kortrijk')
+
+ kortrijk$ g.V().has('city', 'Kortrijk').has('actor','implementor')
+
+ Courtrai$ g.V().has('city', 'Kortrijk')
+
+ Gent$ g.V().has('city', 'Gent')
+
+ Ghent$ g.V().has('city', 'Gent')
+
+ghent$ g.V().has('city', 'Gent')
+
+gent$ g.V().has('city', 'Gent')
+
+Bruxelles$ g.V().has('city', 'Brussel')
+
+Brussels$ g.V().has('city', 'Brussel')
+
+Brussel$ g.V().has('city', 'Brussel')
+
+Zaventem$ g.V().has('city', 'Zaventem')
+
+Ostende$ g.V().has('city', 'Oostende')
+
+Ostend$ g.V().has('city','Oostende')
+
+Oostend$ g.V().has('city', 'Oostende')
+
+oostend$ g.V().has('city', 'Oostende')
+
+OOstend$ g.V().has('city', 'Oostende')
+
+Biotech$ g.V().has("actor", "domain").has("name", within("Biotechnology", "Biometrics", "Biomimetic")).in()
+
+Adventure Sports$ g.V().has("actor", "domain").has("name", within("Sports","Travel"))
+
+Water Sports$ g.V().has("actor", "domain").has("name", within("Marine", "Sports"))
+
+Archery$ g.V().has("actor", "domain").has("name", within("Fitness", "Sports"))
+
+Horse Riding$ g.V().has("actor", "domain").has("name", within("Fitness", "Sports"))
+
+Deinze Blockchain scale-ups$ g.V().has("actor", "domain").has("name", within("Blockchain")).in().has('actor', 'implementor').has("city"," Deinze")
+
+Melle  FinTech scaleups$ g.V().has("actor", "domain").has("name", within("Finance")).in().has('actor', 'implementor').has("city"," Melle")
+
+Food Delivery companies in Roeselare$ g.V().has("actor", "domain").has("name", within("Logisitics","Food","Autonomous Delivery")).in().has('actor', 'implementor').has("city"," Roeselare ")
+
+Travel Tech research in Ghent$ g.V().has("actor", "domain").has("name", within("Travel")).in().has('actor', 'implementor').has("city","Gent")
+
+Tourism companies in Turnhout$ g.V().has("actor", "domain").has("name", within("Tourism")).in().has('actor', 'implementor').has("city"," Turnhout ")
+
+Events Tech research in Bruges$ g.V().has("actor", "domain").has("name", within("Event Management")).in().has('actor', 'implementor').has("city","Brugge")
+
+Ticketing startups in Oudenaarde$ g.V().has("actor", "domain").has("name", within("Event Management")).in().has('actor', 'implementor').has("city"," Oudenaarde ")
+
+Transportation companies in Antwerp$ g.V().has("actor", "domain").has("name", within("Transport")).in().has('actor', 'implementor').has("city","Antwerpen")
+
+Mobility Tech research in Leuven$ g.V().has("actor", "domain").has("name", within("Transport")).in().has('actor', 'implementor').has("city","Leuven")
+
+Electric Vehicles startups in Wortegem-Petegem$ g.V().has("actor", "domain").has("name", within("Automotive", "Energy", "Sustainability")).in().has("actor","implementor").has("city","Wortegem-Petegem")
+
+Automotive companies in Ghent$ g.V().has("actor", "domain").has("name", within("Automotive")).in().has("city","Gent")
+
+Machine learning application in finance$ g.V().has("actor", "domain").has("name", within("Finance")).in()
+
+Deep learning in autonomous vehicles$ g.V().has("actor", "domain").has("name", within("Autonomous Vehicles")).in()
+
+Natural Language Processing in customer service$ g.V().has("actor", "domain").has("name", within("Customer Service")).in()
+
+E-commerce giants in Europe$ g.V().has("actor", "domain").has("name", within("E-commerce")).in()
+
+Retail technology for small businesses$ g.V().has("actor", "domain").has("name", within("Retail")).in()
+
+Fashion tech innovations$ g.V().has("actor", "domain").has("name", within("Fashion")).in()
+
+Textile industry startups$ g.V().has("actor", "domain").has("name", within("Manufacturing","Material","Fashion")).in()
+
+Construction tech for sustainable buildings$ g.V().has("actor", "domain").has("name", within("Construction")).in()
+
+Real Estate tech startups$ g.V().has("actor", "domain").has("name", within("Real Estate")).in()
+
+PropTech companies with AI focus$ g.V().has("actor", "domain").has("name", within("Real Estate")).in()
+
+Manufacturing innovations in Europe$ g.V().has("actor", "domain").has("name", within("Manufacturing")).in()
+
+Industrial tech with IoT applications$ g.V().has("actor", "domain").has("name", within("Internet Of Things")).in()
+
+Materials Science research in automotive industry$ g.V().has("actor", "domain").has("name", within("Material")).in()
+
+Chemical companies with green initiatives$ g.V().has("actor", "domain").has("name", within("Chemical")).in()
+
+Cosmetics industry market leaders$  g.V().has("actor", "domain").has("name", within("Cosmetics","Beauty","Fashion")).in()
+
+Personal Care tech startups$ g.V().has("actor", "domain").has("name", within("Healthcare")).in()
+
+Home Care tech in Europe$ g.V().has("actor", "domain").has("name", within("Healthcare")).in()
+
+FMCG companies with highest growth$ g.V().has("actor", "domain").has("name", within("Logistics")).in().has('actor', 'implementor')
+
+Consumer Goods companies with sustainable products$ g.V().has("actor", "domain").has("name", within("Food","Logistics","Sustainability")).in().has('actor', 'implementor')
+
+Consumer Electronics innovations$ g.V().has("actor", "domain").has("name", within("Embedded Systems")).in()
+
+Mobile Devices with best reviews$ g.V().has("actor", "domain").has("name", within("Telecommunications")).in()
+
+Telecommunications market leaders in Europe$ g.V().has("actor", "domain").has("name", within("Telecommunications")).in().has('actor', 'implementor')
+
+Media companies with largest audience$g.V().has("actor", "domain").has("name", within("Media")).in().has('actor', 'implementor')
+
+Entertainment tech startups$ g.V().has("actor", "domain").has("name", within("Entertainment")).in().has('actor', 'implementor')
+
+Music Tech companies with innovative solutions$ g.V().has("actor", "domain").has("name", within("Music Generation","Media")).in().has('actor', 'implementor')
+
+Film Tech startups in Europe$ g.V().has("actor", "domain").has("name", within("Entertainment","Media")).in().has('actor', 'implementor')
+
+Arts Tech with AI applications$ g.V().has("actor", "domain").has("name", within("Arts","Art Generation")).in()
+
+Sports Tech for performance improvement$ g.V().has("actor", "domain").has("name", within("Sports")).in()
+
+Gaming companies with most popular games$ g.V().has("actor", "domain").has("name", within("Gaming")).in().has('actor', 'implementor')
+
+eSports companies in Europe$ g.V().has("actor", "domain").has("name", within("Gaming")).in().has('actor', 'implementor')
+
+Fitness Tech$ g.V().has("actor", "domain").has("name", within("Fitness")).in()
+
+Nutrition Tech startups with innovative products$ g.V().has("actor", "domain").has("name", within("Food", "HealthCare", "Wellness", "Fitness", "Sustainability")).in().has('actor', 'implementor')
+
+Food and Beverages companies with best sustainable practices$ g.V().has("actor", "domain").has("name", within("Food","Beverage","Sustainability")).in().has('actor', 'implementor')
+
+Restaurant chains with best reviews$ g.V().has("actor", "domain").has("name", within("Food","Beverage","Hospitality")).in().has('actor', 'implementor')
+
+Food Delivery startups with fastest delivery times$ g.V().has("actor", "domain").has("name", within("Logistics","Food","Autonomous Delivery")).in().has('actor', 'implementor')
+
+Travel Tech companies with best customer service$ g.V().has("actor", "domain").has("name", within("Travel")).in().has('actor', 'implementor')
+
+Hospitality startups with highest growth$ g.V().has("actor", "domain").has("name", within("Hospitality")).in().has('actor', 'implementor')
+
+Tourism companies with best sustainable practices$ g.V().has("actor", "domain").has("name", within("Tourism", "Sustainability")).in().has('actor', 'implementor')
+
+Events Tech startups in Europe$ g.V().has("actor", "domain").has("name", within("Event Management")).in().has('actor', 'implementor')
+
+Ticketing platforms with best user experience$ g.V().has("actor", "domain").has("name", within("Event Management")).in().has('actor', 'implementor')
+
+Transportation companies with green initiatives$ g.V().has("actor", "domain").has("name", within("Transport", "Green Energy", "Sustainability")).in().has('actor', 'implementor')
+
+Mobility Tech startups with innovative solutions$ g.V().has("actor", "domain").has("name", within("Transport")).in().has('actor', 'implementor')
+
+Electric Vehicles with longest range$ g.V().has("actor", "domain").has("name", within("Automotive", "Energy", "Sustainability")).in()
+
+Automotive companies with best safety features$ g.V().has("actor", "domain").has("name", within("Automotive", "Safety")).in().has('actor', 'implementor')
+
+Motorcycles with best fuel efficiency$ g.V().has("actor", "domain").has("name", within("Automotive", "Sustainability", "Energy", "Environment")).in()
+
+Bicycles with best reviews$ g.V().has("actor", "domain").has("name", within("Drones", "Smart Devices")).in().has('actor', 'implementor')
+
+Drone companies with innovative solutions$ g.V().has("actor", "domain").has("name", within("Drones", "Smart Devices")).in().has('actor', 'implementor')
+
+Marine tech companies in Europe$ g.V().has("actor", "domain").has("name", "Marine").in().has('actor', 'implementor')
+
+Shipping companies with fastest delivery times$ g.V().has("actor", "domain").has("name", within("Shipping")).in().has("actor", "implementor")
+
+Public Transport apps with best user reviews$ g.V().has("actor", "domain").has("name", "Transport").in().has('actor', 'implementor')
+
+Ride Sharing startups with largest user base$ g.V().has("actor", "domain").has("name", "Ridesharing").has("actor", "implementor")
+
+Car Sharing companies in Europe$ g.V().has("actor", "domain").has("name", within("Ridesharing", "Car-sharing")).has("actor", "implementor")
+
+Bike Sharing startups with most locations$ g.V().has("actor", "domain").has("name", "Ridesharing").has("actor", "implementor")
+
+Scooter Sharing companies with best reviews$ g.V().has("actor", "domain").has("name", "Ridesharing").has("actor", "implementor")
+
+Soccer equipment with best reviews$ g.V().has("actor", "domain").has("name", within( "Sports", "Equipment")).in()
+
+Cricket gear startups$ g.V().has("actor", "domain").has("name", within( "Sports", "Equipment")).in().has("actor", "implementor")

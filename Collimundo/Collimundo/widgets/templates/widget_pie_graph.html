@@ -1,0 +1,41 @@
+{% extends "widget_base.html" %}
+
+{% block widget_type %}pie_graph{% endblock widget_type %}
+{% block default_id %}None{% endblock default_id %}
+{% block default_text %}Sector statistics{% endblock default_text %}
+<!--
+    Leave the block option_selector empty to not include a selector
+-->
+{% block option_selector %}{% endblock option_selector %}
+{% block option_selector_data %}{% endblock option_selector_data %}
+
+{% block content %}
+<div id="widget-{{ unique_widget_id | safe }}" class="w-100 h-100">
+
+</div>
+
+<script>
+    createPie_{{ unique_widget_id | safe }}();
+
+    // Unique function name per loaded widget
+    function createPie_{{ unique_widget_id | safe }}() {
+        let targetDivId = "widget-{{ unique_widget_id | safe }}";
+
+        const targetElement = document.getElementById(targetDivId);
+        const xArray = ["Business", "Production", "Health", "Recruitement", "Transport", "Law", "Food"];
+        const yArray = [55, 45, 40, 24, 15, 9, 20];
+
+        const data = [{
+            labels:xArray,
+            values:yArray,
+            type:"pie"
+        }];
+        const layout = {
+            title: "Different sectors in the environment",
+        };
+        var config = {responsive: true, displaylogo: false, modeBarButtonsToRemove: [toImage]};
+
+        Plotly.newPlot(targetDivId, data, layout, config);
+    }
+</script>
+{% endblock content %}

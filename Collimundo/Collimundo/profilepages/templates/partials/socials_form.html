@@ -1,0 +1,9 @@
+<form method="post">
+    {% csrf_token %}
+    <div class="input-group">
+        <input type="text" class="form-control" name="socials" value="{{ profile.socials }}"/>
+        <span class="input-group-btn align-self-end">
+            <button class="btn btn-outline-success" type="submit" name="socials_button" value="1">save</button>
+        </span>
+    </div>
+</form>

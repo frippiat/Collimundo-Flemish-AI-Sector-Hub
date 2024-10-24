@@ -1,0 +1,35 @@
+numpy==1.26.4
+psycopg2-binary==2.9.9
+# Application
+Django==5.0.2
+django_scheduler==0.10.1
+django-npm==1.0.0
+django-dotenv==1.4.2
+django-anymail[mailgun]==10.3
+sqids==0.4.1
+# Tests
+pytest==8.0.2
+pre-commit==3.6.2
+# Scraping
+selenium==4.18.1
+beautifulsoup4==4.12.3
+urllib3==2.2.1
+# search engine
+gremlinpython==3.7.1
+openai==1.14.2
+Levenshtein==0.25.1
+scikit-learn==1.4.2
+tiktoken==0.6.0
+# API
+newspaper3k==0.2.8
+lxml_html_clean==0.1.1
+gdelt==0.1.14
+xmltodict==0.13.0
+# Graph
+matplotlib==3.8.4
+networkx==3.3
+# async_timeout==4.0.3
+plotly==5.19.0
+# testing
+uuid==1.30
+chromedriver-autoinstaller==0.6.4

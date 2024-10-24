@@ -1,0 +1,9 @@
+<form method="post">
+    {% csrf_token %}
+    <div class="input-group">
+        <input type="text" class="form-control" name="current_occupation" value="{{ profile.current_occupation }}"/>
+        <span class="input-group-btn align-self-end">
+            <button class="btn btn-outline-success" type="submit" name="occupation_button" value="1">save</button>
+        </span>
+    </div>
+</form>

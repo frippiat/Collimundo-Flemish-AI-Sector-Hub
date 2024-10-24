@@ -1,0 +1,229 @@
+{% extends "base_including_search.html" %}
+{% load static %}
+
+{% block title %}Profile{% endblock title %}
+
+{% block head %}
+
+{% endblock head %}
+
+{% block content %}
+
+<!-- Main content area -->
+<div class="container-sm max-height-fit">
+    <style>
+        .max-height-fit {
+            height: 100%;
+            overflow-y: auto;
+            position: relative;
+        }
+        .button-container {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+        .button-container form {
+            display: inline-block;
+            margin-right: 1px;
+        }
+        .button {
+            border-radius: 5px;
+            border-color: var(--accent-color);
+            box-shadow: none;
+            background-color: var(--main-bg-color);
+        }
+        
+        .btn {
+            border: none;
+            outline: none;
+            padding: 5px 10px;
+            background-color: white;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .btn:hover {
+            background-color: #fff;
+            border:1px solid var(--accent-color);
+            padding: 4px 9px;
+        }
+
+        .btn.active {
+            background-color: var(--accent-color);
+            color: white;
+        }
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .popup-content {
+            display: flex;
+            flex-direction: column;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            max-width: 80%;
+            max-height: 80%;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            font-size: 20px;
+            color: var(--accent-color);
+        }
+
+        .request-title {
+            margin-top: 10px;
+        }
+
+        .input-box {
+            margin-top: 10px;
+        }
+
+    </style>
+    <div class="row border-bottom align-items-center">
+        <!-- Name and title -->
+        <div class="col-md-10 mb-4">
+            <h1>{{ profile.user.first_name }} {{ profile.user.last_name }}</h1>
+            <p class="lead">{{ profile.current_occupation }}</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Biography -->
+        <div class="col-md-6 mt-5">
+            <h2>Education</h2>
+            <dl class="list-description">
+                <dt>Master</dt>
+                <dd>{{ profile.education_master }}</dd>
+                <dt>Bachelor</dt>
+                <dd>{{ profile.education_bachelor }}</dd>
+            </dl>
+            <h2>Interests</h2>
+            <ul>
+                {% if profile.interest_1 and profile.interest_1 != "" %}
+                    <li>{{ profile.interest_1 }}</li>
+                {% endif %}
+                {% if profile.interest_2 and profile.interest_2 != "" %}
+                    <li>{{ profile.interest_2 }}</li>
+                {% endif %}
+                {% if profile.interest_3 and profile.interest_3 != "" %}
+                    <li>{{ profile.interest_3 }}</li>
+                {% endif %}
+                {% if profile.interest_4 and profile.interest_4 != "" %}
+                    <li>{{ profile.interest_4 }}</li>
+                {% endif %}
+                {% if profile.interest_5 and profile.interest_5 != "" %}
+                    <li>{{ profile.interest_5 }}</li>
+                {% endif %}
+            </ul>
+            <h2>About</h2>
+            <p>{{ profile.about }}</p>
+        </div>
+
+        <!-- Contact information card -->
+        <div class="col-md-6 mt-5">
+            <div class="card">
+                <div class="card-body">
+                    <h2>Contact information</h2>
+                    <dl class="list-description">
+                        <dt>Phone:</dt>
+                        <dd>{{ profile.user.phone_number }}</dd>
+                        <dt>Email:</dt>
+                        <dd><a href="mailto:{{ profile.contact_email }}">{{ profile.contact_email }}</a></dd>
+                        <dt>Socials:</dt>
+                        <dd><a href="https://www.collimundo.com">{{ profile.socials }}</a></dd>
+                    </dl>
+                </div>
+            </div>
+            <div>
+                <h2 class="request-title">Request your own company page</h2>
+                <button class="btn active" id="company-request" onclick="openPopup('company-request')">Request</button>
+                <div class="popup-overlay" id="popup-company-request">
+                    <div class="popup-content">
+                        <span class="close-btn" data-popup-id="popup-company-request">X</span>
+                        <h1>Enter your own company</h1>
+                        <input class="input-box" type="text" id="vat_nr" placeholder="The VAT number of your company (e.g. 0123456789)">
+                        <input class="input-box" type="text" id="domain" placeholder="The domain your company works in (e.g. Healthcare)">
+                        <button class="btn active" id="submit-request" onclick="submitRequest('{{id}}')">Submit request</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="button-container">
+        {% if user.id == profile.user.id %}
+            <button type="button" class="button" onclick="window.location.href='/profile/edit'">edit</button>
+        {% endif %}
+        <form method="post" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button type="submit" class="button">logout</button>
+        </form>
+    </div>
+
+    <script>
+        // Close popup when close button is clicked
+        document.addEventListener('click', function(event) {
+            if (event.target.classList.contains('close-btn')) {
+                var popupId = event.target.getAttribute('data-popup-id');
+                closePopup(popupId);
+            }
+        });
+
+        function closePopup(popupId) {
+            var popup = document.getElementById(popupId);
+            popup.style.display = 'none';
+        }
+
+        // Close popup when clicking outside of it
+        window.onclick = function(event) {
+            if (event.target.classList.contains('popup-overlay')) {
+                event.target.style.display = "none";
+            }
+            if (event.target.classList.contains('add-overlay')) {
+                event.target.style.display = "none";
+            }
+        }
+
+        // Ratings Pop up
+        function openPopup(index) {
+            var popup = document.getElementById('popup-' + index);
+            popup.style.display = 'flex';
+        }
+
+        function submitRequest(id) {
+            const vat_nr = document.getElementById('vat_nr').value;
+            const domain = document.getElementById('domain').value;
+            if (vat_nr && domain) {
+                sendCompanyRequest(id, vat_nr, domain);
+                closePopup('popup-company-request');
+            } else {
+                alert('Please enter your company details before submitting.');
+            }
+        }
+    </script>
+
+    <script type="module">
+        import {sendCompanyRequest} from "{% static 'profilepages/js/POST_company_request.js' %}"
+        document.addEventListener('DOMContentLoaded', function() {
+            window.sendCompanyRequest = sendCompanyRequest;
+        });
+    </script>
+</div>
+
+{% endblock content %}

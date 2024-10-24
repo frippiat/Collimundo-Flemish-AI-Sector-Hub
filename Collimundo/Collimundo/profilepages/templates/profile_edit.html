@@ -1,0 +1,101 @@
+{% extends "base_including_search.html" %}
+{% load static %}
+
+{% block title %}Profile{% endblock title %}
+
+{% block head %}
+
+{% endblock head %}
+
+{% block content %}
+
+<!-- Main content area -->
+<div class="container-sm max-height-fit">
+    <style>
+        .max-height-fit {
+            height: 100%;
+            overflow-y: auto;
+            position: relative;
+        }
+        .button {
+            border-radius: 5px;
+            border-width: 2px;
+            border-color: var(--accent-color);
+            box-shadow: none;
+            background-color: var(--main-bg-color);
+        }
+    </style>
+    <div class="row border-bottom align-items-center">
+        <!-- Name and title -->
+        <div class="col-md-10 mb-4">
+            <h1>{{ profile.user.first_name }} {{ profile.user.last_name }}</h1>
+            {% include "partials/current_occupation_form.html" %}
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Biography -->
+        <div class="col-md-6 mt-5">
+            <h2>Education</h2>
+            <dl class="list-description">
+                {% include "partials/education_form.html" %}
+            </dl>
+            <h2>Interests</h2>
+            <ul class="col-md-5">
+                {% include "partials/interest_form.html" %}
+            </ul>
+            <button class="btn btn-outline-success" id="add-interest" type="button">
+                + Add interest
+            </button>
+            <h2 class="mt-3">About</h2>
+            {% include "partials/about_form.html" %}
+        </div>
+
+        <!-- Contact information card -->
+        <div class="col-md-6 mt-5">
+            <div class="card">
+                <div class="card-body">
+                    <h2>Contact information</h2>
+                    <dl class="list-description col-md-6">
+                        <dt>Phone:</dt>
+                        <dd>{% include "partials/phone_number_form.html" %}</dd>
+                        <dt>Email:</dt>
+                        <dd>{% include "partials/contact_email_form.html" %}</dd>
+                        <dt>Socials:</dt>
+                        <dd>{% include "partials/socials_form.html" %}</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var addInterestButton = document.getElementById('add-interest');
+        var interestForm = document.getElementById('interest-form');
+        var maxInputFields = 5; // Maximum number of input fields
+
+        addInterestButton.addEventListener('click', function () {
+            var inputCount = interestForm.getElementsByTagName('input').length;
+            if (inputCount < maxInputFields) {
+                var formIndex = inputCount + 1;
+                var newInput = document.createElement('input');
+                newInput.type = "text";
+                newInput.className = "form-control";
+                newInput.name = "interest_" + formIndex;
+
+                // Create a list item element
+                var listItem = document.createElement('li');
+                listItem.appendChild(newInput);
+
+                // Get the button element
+                var addButtonElement = interestForm.querySelector('button[type="submit"]')
+                // Insert the new input before the button
+                interestForm.insertBefore(listItem, addButtonElement);
+            }
+        });
+    });
+</script>
+
+{% endblock content %}

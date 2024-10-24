@@ -1,0 +1,166 @@
+[
+    {
+      "role": "system",
+      "content": "Convert textual user input to Gremlin query for the given knowledge graph database about the Flanders ecosystem around AI. Make sure the results always contains all properties of the node (do not use .values() function). Return only a gremlin query. 1)Node types and properties. {id, actor=\"implementor\", name, name_lower, description, photo, financials, btw, zipcode, street, housenumber, city, email, tel, startdate, website, facebook, twitter, linkedin, instagram, projects, category, jobs}, {id, actor=\"investor\", name, summary, logo, zipcode, street, housenumber, city, email, tel, website, facebook, twitter, linkedin, instagram, investment scope}, {id, actor=\"external\", name, website, photo}, {id, actor=\"domain\", name}, {id, actor=\"domain\", name, description, photo, website, email, tel, papers}, {name, actor=\"university\", zipcode, street, housenumber, city, email, tel, logo, website}, {name, actor=\"individual\", behavior, photo, email, tel, description}. 2) Links. implementor/external/research to individual: person works at company, name link: \"employs\"; implementor to individual: person is interested in company, name link: \"interests\"; investor to implementor/research group: An investor invested in company/research group, name link: \"invests_in\"; implementor/research to domain: implements solutions for this domain, name link: \"works_on\"; investor to domain: investor invests in this domain, name link:\"domain\"; implementor to external: key partner of company, name link: \"external_partner\"; implementor to research: key partner of the research group, name link: \"research_partner\"; implementor to university: alumni company of the university, name link: \"uni_alumni\"; implementor to university: Partner of the university, name link: \"uni_partner\"; research to university: research group does research for the university, name link: \"university\"; research to research: collaboration with another research group, name link: \"research_colab\"; individual to university: university the individual studied at, name link: \"studied_at\". Only use domains out of the following list: [\"Finance\", \"Retail\", \"E-commerce\", \"Manufacturing\", \"Automotive\", \"Education\", \"Legal\", \"Real Estate\", \"Venture Capital\", \"Equipment\", \"Energy\", \"Marketing\", \"Advertising\", \"Travel\", \"Hospitality\", \"Agriculture\", \"Telecommunications\", \"Government\", \"Public Services\", \"Talent Acquisition\", \"Employee Engagement\", \"Construction\", \"Entertainment\", \"Media\", \"Aerospace\", \"Pharmaceuticals\", \"Biotechnology\", \"Environmental\", \"Non-profit\", \"Gaming\", \"Fashion\", \"Sports\", \"Logistics\", \"Shipping\", \"Insurance\", \"Investment\", \"Food\", \"Beverage\", \"Fitness\", \"Wellness\", \"Beauty\", \"Cosmetics\", \"Design\", \"Consulting\", \"Research\", \"Waste Management\", \"Printing\", \"Publishing\", \"Event Management\", \"Arts\", \"Museum\", \"Machinery\", \"Culture\", \"Veterinary\", \"Healthcare\", \"Wealth management\", \"Sustainability\", \"Asset management\", \"Transport\", \"Human Resources\", \"Cryptocurrency\", \"Data Analysis\", \"Predictive Analytics\", \"Image Recognition\", \"Speech Recognition\", \"Chatbot\", \"Automation\", \"Personalization\", \"Recommender Systems\", \"Optimization\", \"Fraud Detection\", \"Risk Assessment\", \"Supply Chain\", \"Blockchain\", \"Internet of Things\", \"Cybersecurity\", \"Augmented Reality\", \"Virtual Reality\", \"Biometrics\", \"Robot\", \"Smart Devices\", \"Wearables\", \"Quantum Computing\", \"Embedded Systems\", \"Microcontrollers\", \"Data Engineering\", \"Anomaly Detection\", \"Text Mining\", \"Generative AI\", \"Knowledge Representation\", \"Art Generation\", \"Music Generation\", \"Text Generation\", \"Image Generation\", \"Creative AI\", \"Cognitive Computing\", \"Autonomous Delivery\", \"Autonomous Vehicle\", \"Autonomous Software\", \"Reinforcement Learning\", \"Genetic Algorithm\", \"Computer Vision\", \"Expert System\", \"Virtual Agent\", \"Intelligent Agent\", \"Decision-making\", \"Smart Grid\", \"Ambient Intelligence\", \"Business intelligence\", \"Emotion AI\", \"Neuromorphic\", \"Brain-inspired\", \"Biomimetic\", \"Hardware\", \"Processor\", \"AI Accelerator\", \"Edge AI\", \"Coprocessors\", \"Cloud\", \"SaaS\", \"CleanTech\", \"Drones\", \"Nanotechnology\", \"Car-sharing\", \"Ridesharing\", \"Security\", \"Safety\", \"Green Energy\", \"Tourism\", \"Chemical\", \"Material\", \"Marine\", \"InvestmentFood\", \"Ethics\"]"
+    },
+    {
+      "role": "user",
+      "content": "give me all alumni companies of ghent university that help me manage my employees"
+    },
+    {
+      "role": "assistant",
+      "content": "g.V().has(\"actor\", \"domain\").has(\"name\", within(\"Employee Engagement\", \"Human Resources\")).both(\"works_on\").as('a').V().has(\"actor\", \"university\").has(\"name_lower\", \"ghent university\").both(\"uni_alumni\").as('b').select('a').where('a', eq('b'))"
+    },
+    {
+      "role": "user",
+      "content": "give me all investors of TechWolf"
+    },
+    {
+      "role": "assistant",
+      "content": "g.V().has(\"name_lower\", \"techwolf\").in(\"invests_in\").has(\"actor\", \"investor\")"
+    },
+    {
+      "role": "user",
+      "content": "help i can't handle my waste"
+    },
+    {
+      "role": "assistant",
+      "content": "g.V().has(\"actor\", \"domain\").has(\"name\", within(\"Waste Management\")).both().has(\"actor\", \"implementor\")"
+    },
+    {
+      "role": "user",
+      "content": "investors of alumni comanies of ghent university"
+    },
+    {
+      "role": "assistant",
+      "content": "g.V().has(\"actor\", \"university\").has(\"name_lower\", \"ghent university\").both(\"uni_alumni\").in(\"invests_in\").has(\"actor\", \"investor\")"
+    },
+    {
+      "role": "user",
+      "content": "competitors of biolizard"
+    },
+    {
+      "role": "assistant",
+      "content": "g.V().has(\"name_lower\", \"biolizard\").both(\"works_on\").has(\"actor\", \"domain\").both(\"works_on\")"
+    },
+    {
+      "role": "user",
+      "content": "who invested in companies like biorics"
+    },
+    {
+      "role": "assistant",
+      "content": "g.V().has(\"actor\", \"implementor\").has(\"name_lower\", \"biorics\").both(\"works_on\").both(\"works_on\").has(\"actor\", \"implementor\").both(\"invests_in\").has(\"actor\", \"investor\")"
+    },
+    {
+      "role": "user",
+      "content": "I need to install Internet-connected sensors and monitor their data"
+    },
+    {
+      "role": "assistant",
+      "content": "g.V().has(\"actor\", \"domain\").has(\"name\",  within(\"Internet of Things\", \"Data Analysis\",\"Automation\")).both(\"works_on\").has(\"actor\", \"implementor\")"
+    },
+    {
+      "role": "user",
+      "content": "who will maybe invest in my bio company"
+    },
+    {
+      "role": "assistant",
+      "content": "g.V().has(\"actor\", \"domain\").has(\"name\", within(\"Biotechnology\", \"Biometrics\", \"Biomimetic\")).both(\"domain\").has(\"actor\", \"investor\")"
+    },
+    {
+      "role": "user",
+      "content": "For which university does the VIB research group work?"
+    },
+    {
+      "role": "assistant",
+      "content": "g.V().has(\"actor\",\"research\").has(\"name_lower\",containing(\"vib\")).both(\"university\").has(\"actor\",\"university\")"
+    },
+    {
+      "role": "user",
+      "content": "Artificial intelligence"
+    },
+    {
+      "role": "assistant",
+      "content": "g.V()"
+    },
+    {
+      "role": "user",
+      "content": "How can I improve the energy consumption in my smart building"
+    },
+    {
+      "role": "assistant",
+      "content": "g.V().has(\"actor\", \"domain\").has(\"name\", within(\"Smart Devices\",\"Construction\",\"Energy\")).both(\"works_on\").has(\"actor\", \"implementor\")"
+    },
+    {
+      "role": "user",
+      "content": "Research groups at Ghent University"
+    },
+    {
+      "role": "assistant",
+      "content": "g.V().has(\"actor\",\"university\").has(\"name_lower\",containing(\"ghent university\")).both(\"university\").has(\"actor\",\"research\")"
+    },
+    {
+      "role": "user",
+      "content": "I'm looking for investors for my self driving car startup"
+    },
+    {
+      "role": "assistant",
+      "content": "g.V().has(\"actor\",\"domain\").has(\"name\",within(\"Autonomous Vehicle\")).both(\"domain\").has(\"actor\", \"investor\")"
+    },
+    {
+      "role": "user",
+      "content": "How is AI being used to combat climate change"
+    },
+    {
+      "role": "assistant",
+      "content": "g.V().has(\"actor\",\"domain\").has(\"name\",within(\"Sustainability\",\"Green Energy\",\"CleanTech\",\"Environmental\")).both(\"works_on\")"
+    },
+    {
+      "role": "user",
+      "content": "biotech"
+    },
+    {
+      "role": "assistant",
+      "content": "g.V().has(\"actor\", \"domain\").has(\"name\", within(\"Biotechnology\", \"Biometrics\", \"Biomimetic\")).both(\"works_on\")"
+    },
+    {
+      "role": "user",
+      "content": "all investments in collimundo"
+    },
+    {
+      "role": "assistant",
+      "content": "g.V().has(\"actor\", \"domain\").has(\"name\", within(\"Biotechnology\", \"Biometrics\", \"Biomimetic\")).both()"
+    },
+    {
+      "role": "user",
+      "content": "companies like Kasse"
+    },
+    {
+      "role": "assistant",
+      "content": "g.V().has(\"actor\", \"implementor\").has(\"name_lower\", \"kasse\").out(\"works_on\").in(\"works_on\").hasLabel(\"implementor\")"
+    },
+    {
+      "role": "user",
+      "content": "where do people that study at ghent university go to work? i have a specific hardware interest."
+    },
+    {
+      "role": "assistant",
+      "content": "g.V().has(\"actor\", \"university\").has(\"name_lower\", containing(\"ghent university\")).both(\"uni_alumni\").has(\"actor\", \"implementor\").as('a').V().has(\"actor\", \"domain\").has(\"name\", within(\"Hardware\")).both(\"works_on\").has(\"actor\", \"implementor\").as('b').select('a').where('a', eq('b'))"
+    },
+    {
+      "role": "user",
+      "content": "What research groups are leading in AI ethics in Flanders?"
+    },
+    {
+      "role": "assistant",
+      "content": "g.V().has(\"actor\", \"domain\").has(\"name\", within(\"Ethics\")).both(\"works_on\").has(\"actor\", \"research\")"
+    },
+    {
+      "role": "user",
+      "content": "welke bedrijven gebruiken ai voor breinonderzoek"
+    },
+    {
+      "role": "assistant",
+      "content": "g.V().has(\"actor\", \"domain\").has(\"name\", within(\"Neuromorphic\", \"Brain-inspired\")).both(\"works_on\").has(\"actor\", \"implementor\")"
+    }
+  ]

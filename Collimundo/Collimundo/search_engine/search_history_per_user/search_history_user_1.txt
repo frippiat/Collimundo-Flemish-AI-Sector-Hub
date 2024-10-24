@@ -1,0 +1,2 @@
+All alumni companies from universitytest
+g.V().has('actor', 'university').has('name_lower', containing('universitytest')).both('uni_alumni').has('actor', 'implementor').dedup()

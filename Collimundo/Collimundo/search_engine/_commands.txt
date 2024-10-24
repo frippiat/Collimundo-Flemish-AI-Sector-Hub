@@ -1,0 +1,38 @@
+
+# Get list of all enities with name PAPERBOX
+
+g.V().hasLabel('implementor', 'investor', 'external', 'research','university', 'individual').has("name", "PAPERBOX")
+
+
+# Get all connected entities
+
+(...).both()
+example: g.V().hasLabel('implementor', 'investor', 'external', 'research','university', 'individual').has("name", "PAPERBOX").both()
+
+
+# Get all connected entities with certain label
+
+(...).both().hasLabel("implementor")
+
+
+# Get all entities connected with one step in between
+
+(...).both().both().dedup()
+note: this also returns the entity returned by the first command
+
+
+# Get all entities in same domain and get domain
+
+g.V().has("name_lower", "polysense").as("source").both().as("domain").hasLabel('domain').both().not(where(eq('source'))).as("final").select("source", "domain", "final").dedup()
+
+
+# Get every linked company with domain name and original company name
+
+g.V().has("name_lower", "polysense").as("source").both().as("domain").hasLabel('domain').both().not(where(eq('source'))).as("final").select("source", "domain", "final").by(values('name')).by(values('name')).by().dedup()
+
+
+# Full command for connected companies
+
+g.V().has("name_lower", "polysense").as("source").both().as("domain").hasLabel('domain').both().not(where(eq('source'))).as("linked_id").select("source", "domain", "linked_id").by(values('id')).dedup()
+for each linked_id link:
+    g.V().has("id", linked_id).as("linked_id")

@@ -1,0 +1,21 @@
+{
+  "_comment": {
+    "name": "collimundo",
+    "version": "0.2",
+    "description": "**Clone:** Clone git hub repository \\\r `git clone (git link)`",
+    "main": "index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+      "type": "git",
+      "url": "https://gitlab.ilabt.imec.be/xstaelen/collimundo.git"
+    },
+    "author": "",
+    "license": "UNLICENSED",
+    "private": true
+  },
+  "dependencies": {
+    "gridstack": "^10.1.1"
+  }
+}

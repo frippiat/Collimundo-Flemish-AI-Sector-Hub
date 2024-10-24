@@ -1,0 +1,9 @@
+<form method="post">
+    {% csrf_token %}
+    <div class="form-group">
+        <textarea class="form-control" name="about" rows="5">{{ profile.about }}</textarea>
+        <span class="input-group-btn">
+            <button class="btn btn-outline-success" type="submit" name="about_button" value="1">save</button>
+        </span>
+    </div>
+</form>

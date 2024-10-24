@@ -1,0 +1,94 @@
+{% extends "widget_base.html" %}
+
+{% block widget_type %}line_graph{% endblock widget_type %}
+{% block default_id %}None{% endblock default_id %}
+{% block default_text %}Select company{% endblock default_text %}
+{% block default_id_data %}None{% endblock default_id_data %}
+{% block default_text_data %}Select data{% endblock default_text_data %}
+<!--
+    By having \{\{ block.super \}\} you include the selector.
+    Leave the block option_selector empty to not include a selector
+-->
+{% block option_selector %}
+{% if unique_widget_id != "cp1" %}
+{{ block.super }}
+{% endif %}
+{% endblock option_selector %}
+{% block option_selector_data %}
+{% if unique_widget_id != "cp1" %}
+{{ block.super }}
+{% endif %}
+{% endblock option_selector_data %}
+
+{% block content %}
+<div id="widget-{{ unique_widget_id | safe }}" class="w-100 h-100">
+
+</div>
+
+<script>
+    createScatter_{{ unique_widget_id | safe }}("{{ selected_option | safe }}", "{{ selected_option_data.0 | safe }}", "{{ selected_option_data.1 | safe }}");
+
+    // Unique function name per loaded widget
+    function createScatter_{{ unique_widget_id | safe }}(selected_option, selected_option_data_1, selected_option_data_2) {
+        let targetDivId = "widget-{{ unique_widget_id | safe }}";
+
+        if (selected_option == "None") {
+            document.getElementById(targetDivId).innerHTML = '<p style="display: flex; justify-content: center; align-items: center; height: 100%; font-size: 24px">Select a company to see data.</p>';
+        } 
+        else if (selected_option_data_1 == "") {
+            document.getElementById(targetDivId).innerHTML = '<p style="display: flex; justify-content: center; align-items: center; height: 100%; font-size: 24px">Select a data type to see data.</p>';   
+        }
+        else {
+            var encodedData = "{{ financials | safe }}";
+
+            var decodedData = encodedData.replace(/'/g, '"');
+            // Parsing the decoded JSON string to a JavaScript object
+            var data = JSON.parse(decodedData);
+
+            companyData = data[selected_option]
+            
+            var startDates = []
+            var dataValues = []
+            
+            for (var date in companyData) {
+                // Check if the entry contains Brutomarge value
+                if (companyData[date].hasOwnProperty(selected_option_data_1)) {
+                    // Add the Brutomarge value to the array
+                    startDates.push(date)
+                    dataValues.push(companyData[date][selected_option_data_1]);
+                }
+            }
+
+            if (startDates.length == 0 || dataValues.length == 0) {
+                document.getElementById(targetDivId).innerHTML = '<p style="display: flex; justify-content: center; align-items: center; height: 100%; font-size: 24px">There is no data available.</p>';
+            } else if (startDates.length == 1 && dataValues.length == 1) {
+                document.getElementById(targetDivId).innerHTML = '<p style="display: flex; justify-content: center; align-items: center; height: 100%; font-size: 20px">The ' + selected_option_data_2 + " on " + startDates + " was " + dataValues + " euro.</p>";
+            } else {
+                var trace1 = {
+                    x: startDates,
+                    y: dataValues,
+                    name: selected_option_data_2,
+                    type: 'scatter',
+                    mode: 'lines+markers',
+                    marker: {
+                        color: 'rgb(126, 217, 87)'
+                    },
+                };
+                var data = [trace1];
+
+                var layout = {
+                    title: selected_option_data_2 + ' in the<br>previous years of ' + selected_option,
+                    autosize: true,
+                    xaxis: {
+                        tickangle: -45
+                    }
+                };
+
+                var config = {responsive: true, displaylogo: false, modeBarButtonsToRemove: ["toImage"]};
+
+                line_plot = Plotly.newPlot(targetDivId, data, layout, config);
+            }
+        }
+    }
+</script>
+{% endblock content %}

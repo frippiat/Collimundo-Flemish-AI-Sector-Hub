@@ -1,0 +1,74 @@
+{% extends "widget_base.html" %}
+
+{% block widget_type %}projects{% endblock widget_type %}
+{% block default_id %}Projects{% endblock default_id %}
+{% block default_text %}Projects{% endblock default_text %}
+<!--
+    Leave the block option_selector empty to not include a selector
+-->
+{% block option_selector %}{% endblock option_selector %}
+{% block option_selector_data %}{% endblock option_selector_data %}
+
+{% block content %}
+<div id="{{ unique_widget_id | safe }}">
+    <div class="container">
+        <h3>Projects and publications</h3>
+        {% if projects %}
+            {% for project in projects %}
+                <div class="list-item" onclick="openProjectPopup('{{ unique_widget_id }}_{{ forloop.counter0 }}')">
+                    <div class="vacancy-title">
+                        {{ project.title }}
+                    </div>
+                    <div class="event-title">
+                        <div class="event-company">
+                            {{ project.company }}
+                        </div>
+                        <div class="project-type">
+                            {{ project.type }}
+                        </div>
+                    </div>
+                    <div class="popup-overlay" id="popup-{{ unique_widget_id }}_{{ forloop.counter0 }}">
+                        <div class="popup-content">
+                            <span class="close-btn" data-popup-id="popup-{{ unique_widget_id }}_{{ forloop.counter0 }}">X</span>
+                            <h1>{{ project.title }}</h1>
+                            <p>{{ project.type }}</p>
+                            <p>{{ project.url }}</p>
+                            <p>{{ project.description }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            No projects or publications available.
+        {% endif %}
+    </div>
+</div>
+
+<script>
+    // Project Pop up
+    function openProjectPopup(index) {
+        var popup = document.getElementById('popup-' + index);
+        popup.style.display = 'flex';
+    }
+
+    // Close popup when close button is clicked
+    document.addEventListener('click', function(event) {
+        if (event.target.classList.contains('close-btn')) {
+            var popupId = event.target.getAttribute('data-popup-id');
+            closePopup(popupId);
+        }
+    });
+
+    function closePopup(popupId) {
+        var popup = document.getElementById(popupId);
+        popup.style.display = 'none';
+    }
+
+    // Close popup when clicking outside of it
+    window.onclick = function(event) {
+        if (event.target.classList.contains('popup-overlay')) {
+            event.target.style.display = "none";
+        }
+    }
+</script>
+{% endblock content %}

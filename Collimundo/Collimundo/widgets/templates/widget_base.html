@@ -1,0 +1,22 @@
+<div class="widget-base">
+
+    {% block option_selector %}
+    <select class="widget-option-selector" onchange="changeWidgetOption('{{ unique_widget_id }}', '{% block widget_type %}{% endblock widget_type %}', this.value, '{{ selected_option_data.0 }}')">
+        <option value="{% block default_id %}{% endblock default_id %}" {% if selected_option == "None" %}selected{% endif %}>{% block default_text %}{% endblock default_text %}</option>
+        {% for id, name in options_dic.items %}
+            <option value="{{ id }}" {% if selected_option == id %}selected{% endif %}>{{ name }}</option>
+        {% endfor %}
+    </select>
+    {% endblock option_selector %}
+
+    {% block option_selector_data %}
+    <select class="widget-option-selector-data" onchange="changeWidgetOption('{{ unique_widget_id }}', '{% block widget_type_data %}{% endblock widget_type_data %}', '{{ selected_option }}', this.value)">
+        <option value="{% block default_id_data %}{% endblock default_id_data %}" {% if selected_option_data.0 == "None" %}selected{% endif %}>{% block default_text_data %}{% endblock default_text_data %}</option>
+        {% for id, name in options_dic_data.items %}
+            <option value="{{ id }}" {% if selected_option_data.0 == id %}selected{% endif %}>{{ name }}</option>
+        {% endfor %}
+    </select>
+    {% endblock option_selector_data %}
+
+    {% block content %}{% endblock content %}
+</div>

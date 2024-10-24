@@ -1,0 +1,29 @@
+<form method="post">
+    {% csrf_token %}
+    <div class="input-group" id="interest-form">
+        <li>
+            <input type="text" class="form-control" name="interest_1" value="{{ profile.interest_1 }}"/>
+        </li>
+        {% if profile.interest_2 and profile.interest_2 != "" %}
+            <li>
+                <input type="text" class="form-control" name="interest_2" value="{{ profile.interest_2 }}"/>
+            </li>
+        {% endif %}
+        {% if profile.interest_3 and profile.interest_3 != "" %}
+            <li>
+                <input type="text" class="form-control" name="interest_3" value="{{ profile.interest_3 }}"/>
+            </li>
+        {% endif %}
+        {% if profile.interest_4 and profile.interest_4 != "" %}
+            <li>
+                <input type="text" class="form-control" name="interest_4" value="{{ profile.interest_4 }}"/>
+            </li>
+        {% endif %}
+        {% if profile.interest_5 and profile.interest_5 != "" %}
+            <li>
+                <input type="text" class="form-control" name="interest_5" value="{{ profile.interest_5 }}"/>
+            </li>
+        {% endif %}
+        <button class="btn btn-outline-success" type="submit" name="interest_button" value="1">save</button>
+    </div>
+</form>
