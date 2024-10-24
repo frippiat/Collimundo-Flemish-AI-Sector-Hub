@@ -1,0 +1,180 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Admin Dashboard{% endblock title %}
+
+{% block head %}
+
+<!-- <script src="{% static 'admins/js/.js' %}"></script> -->
+<!-- <link rel="stylesheet" href="{% static 'admins/style/dashboard.css' %}"/> -->
+<script src="{% static 'dashboard/js/dashboard_editor.js' %}" type="module"></script>
+
+
+{% endblock head %}
+
+{% block buttons-header %}
+
+<!-- Leave admin page -->
+<li class="nav-item">
+    <a class="nav-link" id="dashboard-button" href="{% url 'dashboard' %}">Leave admin dashboard</a>
+</li>
+
+{% endblock buttons-header %}
+
+{% block content %}
+
+
+<div class="component h-100 w-100 d-flex flex-column align-items-center">
+
+    <div class="component-title">
+        Page claim requests
+    </div>
+    
+    <div id="claim-request-container">
+        {% for claim in claims %}
+        <div class="claim-request" data-claim-id="{{ claim.claim_id }}">
+            <div class="claim-request-body">
+                <div class="claim-request-user">{{ claim.first_name }} {{ claim.last_name }}</div>
+                <span class="vertical-divider-dot"></span>
+                <div class="claim-request-email">{{ claim.email }}</div>
+                <span class="vertical-divider">|</span>
+                <div class="claim-request-company">{{ claim.company }}</div>
+                <span class="vertical-divider">|</span>
+                <div class="claim-request-timestamp">{{ claim.timestamp }}</div>
+                <div class="claim-request-buttons-container">
+                    <button class="claim-request-buttons" id="claim-request-accept" onclick="acceptClaim({{ claim.claim_id }})">Accept</button>
+                    <button class="claim-request-buttons" id="claim-request-reject" onclick="rejectClaim({{ claim.claim_id }})">Reject</button>
+                    <div id="claim-request-accepted">Accepted</div>
+                    <div id="claim-request-rejected">Rejected</div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    
+    <style>
+        .vertical-divider {
+            margin: 0 10px;
+            color: var(--accent-color);
+        }
+
+        .vertical-divider-dot {
+            margin: 0px 9px;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: var(--accent-color);
+        }
+
+        .component-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        
+        #claim-request-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            width: 100%;
+            max-width: 1100px;
+        }
+
+        .claim-request {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            border: 1px solid black;
+            padding: 1rem;
+        }
+        
+        .claim-request-body {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .claim-request-email {
+            /* font-weight: 300; */
+        }
+        
+        .claim-request-user {
+            font-weight: bold;
+        }
+        
+        .claim-request-email {
+        }
+
+        .claim-request-timestamp {
+            font-weight: 300;
+        }
+        
+        .claim-request-buttons-container {
+            margin-left: auto;
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+        .claim-request-buttons {
+            cursor: pointer;
+            padding: 0.25rem 0.5rem;
+            /* border: 1px solid var(--accent-color); */
+            border: none;
+            border-radius: 0.25rem;
+            background-color: var(--main-bg-color);
+            cursor: pointer;
+            color: white;
+            align-items: center;
+        }    
+        
+        #claim-request-accept {
+            background-color: green;
+        }
+        
+        #claim-request-reject {
+            background-color: red;
+        }
+
+        #claim-request-accepted, #claim-request-rejected {
+            display: none;
+            font-weight: bold;
+        }
+
+        #claim-request-accepted {
+            color: green;
+        }
+
+        #claim-request-rejected {
+            color: red;
+        }
+
+    </style>
+
+    <script type="module">
+        import {handleClaimRequest} from "{% static 'admins/js/POST_claim_handling.js' %}"
+        function acceptClaim(claim_id) {
+            handleClaimRequest(claim_id, "accept", removeClaimRequest)
+        }
+        function rejectClaim(claim_id) {
+            handleClaimRequest(claim_id, "reject", removeClaimRequest)
+        }
+        function removeClaimRequest(action, claim_id, data) {
+            const claimRequest = document.querySelector(`.claim-request[data-claim-id="${claim_id}"]`);
+            if (action === "accept") {
+                claimRequest.querySelector("#claim-request-accept").style.display = "none";
+                claimRequest.querySelector("#claim-request-reject").style.display = "none";
+                claimRequest.querySelector("#claim-request-accepted").style.display = "block";
+            } else if (action === "reject") {
+                claimRequest.querySelector("#claim-request-accept").style.display = "none";
+                claimRequest.querySelector("#claim-request-reject").style.display = "none";
+                claimRequest.querySelector("#claim-request-rejected").style.display = "block";
+            }
+        }
+        window.acceptClaim = acceptClaim;
+        window.rejectClaim = rejectClaim;
+        window.removeClaimRequest = removeClaimRequest;
+    </script>
+
+</div>
+
+{% endblock content %}

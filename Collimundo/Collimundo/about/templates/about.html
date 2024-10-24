@@ -1,0 +1,190 @@
+{% extends "base_including_search.html" %}
+{% load static %}
+
+{% block title %}About{% endblock title %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'about/style/about.css' %}" />
+{% endblock head %}
+
+{% block content %}
+
+<div class="about-container">
+    <div class="section" id="description">
+
+        <div class="section-title">What do we do</div>
+        <div class="centered-text">
+            Collimundo creates an interconnected network within Flanders, uniting companies,
+            organizations, and individuals involved in artificial intelligence. This initiative
+            focuses on establishing a cohesive AI ecosystem by engaging and working closely with
+            various stakeholders such as implementers, enablers, investors, institutions of higher
+            education and talents for the AI market. Collimundo contains multiple components,
+            such as a specialized search engine and an advanced dashboard through which a user
+            interacts with the system.
+        </div>
+
+    </div>
+    <div class="section" id="components">
+
+        <div class="section-title">How it works</div>
+        <div class="centered-text">
+            Collimundo provides a versatile search engine designed to furnish comprehensive
+            information about Flemish entities operating in artificial intelligence.
+            Users can initiate queries ranging from specific sector-related inquiries to broader
+            entity searches, and consistently expect relevant results. Each search result represents an entity.
+        </div>
+        <div class="spacer"></div>
+        <div class="centered-text">
+            Each search result unfolds into a detailed entity profile, offering a holistic view of the
+            entity's operations. From financial metrics to contact details and supplementary data like
+            vacancies, events, and projects, users gain comprehensive insights. The ability to follow
+            entities facilitates ongoing engagement and monitoring of developments.
+        </div>
+        <div class="spacer"></div>
+        <div class="centered-text">
+            Furthermore, our platform offers a customizable dashboard equipped with a variety of widgets.
+            Users can tailor their dashboard with widgets displaying updates on followed companies,
+            AI sector news, and more. The option to create multiple dashboards allows for personalized
+            views based on specific preferences or areas of interest, enhancing efficiency in
+            information management and decision-making.
+        </div>
+
+    </div>
+    <div class="section" id="team">
+        <div class="section-title">A team with a drive for AI</div>
+        <div class="team-gallery">
+            <div class="member">
+                <div class="overlay-container">
+                    <div class="img-container">
+                        <img src="{% static '/images/team/arne_vervaet.png' %}" alt="arne_vervaet" class="img"/>
+                    </div>
+                    <div class="overlay">
+                        <div class="overlay-text">Managing is my thing!</div>
+                    </div>
+                </div>
+                <div class="header-member">Arne Vervaet</div>
+                <div class="role">Project Manager</div>
+            </div>
+            <div class="member">
+                <div class="overlay-container">
+                    <div class="img-container">
+                        <img src="{% static '/images/team/vincent_frippiat.png' %}" alt="vincent_frippiat" class="img"/>
+                    </div>
+                    <div class="overlay">
+                        <div class="overlay-text">Collimundo for the win!</div>
+                    </div>
+                </div>
+                <div class="header-member">Vincent Frippiat</div>
+                <div class="role">Product Owner</div>
+                <div class="subteam">API</div>
+            </div>
+            <div class="member">
+                <div class="overlay-container">
+                    <div class="img-container">
+                        <img src="{% static '/images/team/xander_staelens.png' %}" alt="xander_staelens" class="img"/>
+                    </div>
+                    <div class="overlay">
+                        <div class="overlay-text">Developing is smooth!</div>
+                    </div>
+                </div>
+                <div class="header-member">Xander Staelens</div>
+                <div class="role">CI CD Expert</div>
+                <div class="subteam">General application</div>
+            </div>
+            <div class="member">
+                <div class="overlay-container">
+                    <div class="img-container">
+                        <img src="{% static '/images/team/islam_bekov.png' %}" alt="islam_bekov" class="img"/>
+                    </div>
+                    <div class="overlay">
+                        <div class="overlay-text">It is what it is</div>
+                    </div>
+                </div>
+                <div class="header-member">Islam Bekov</div>
+                <div class="role">System administrator</div>
+                <div class="subteam">Databases</div>
+            </div>
+            <div class="member">
+                <div class="overlay-container">
+                    <div class="img-container">
+                        <img src="{% static '/images/team/warre_veys.jpg' %}" alt="warre_veys" class="img"/>
+                    </div>
+                    <div class="overlay">
+                        <div class="overlay-text">Testing is (a bit) important!</div>
+                    </div>
+                </div>
+                <div class="header-member">Warre Veys</div>
+                <div class="role">Test Manager</div>
+                <div class="subteam">Scraping</div>
+            </div>
+            <div class="member">
+                <div class="overlay-container">
+                    <div class="img-container">
+                        <img src="{% static '/images/team/furkan_poyraz.jpg' %}" alt="furkan_poyraz" class="img"/>
+                    </div>
+                    <div class="overlay">
+                        <div class="overlay-text">High quality is what I am!</div>
+                    </div>
+                </div>
+                <div class="header-member">Furkan Poyraz</div>
+                <div class="role">Quality Manager</div>
+                <div class="subteam">API</div>
+            </div>
+            <div class="member">
+                <div class="overlay-container">
+                    <div class="img-container">
+                        <img src="{% static '/images/team/gerben_ceuppens.jpg' %}" alt="gerben_ceuppens" class="img"/>
+                    </div>
+                    <div class="overlay">
+                        <div class="overlay-text">Everything is going to be okay!</div>
+                    </div>
+                </div>
+                <div class="header-member">Gerben Ceuppens</div>
+                <div class="role"></div>
+                <div class="subteam">General application</div>
+                <!--<div class="member-tags">
+                    <div class="tag">Front-end developing</div>
+                    <div class="tag">Django</div>
+                </div>-->
+            </div>
+            <div class="member">
+                <div class="overlay-container">
+                    <div class="img-container">
+                        <img src="{% static '/images/team/ewout_danneels.jpg' %}" alt="ewout_danneels" class="img"/>
+                    </div>
+                    <div class="overlay">
+                        <div class="overlay-text">Time is money!</div>
+                    </div>
+                </div>
+                <div class="header-member">Ewout Danneels</div>
+                <div class="role">Time Manager</div>
+                <div class="subteam">Search engine</div>
+            </div>
+            <div class=" member">
+                <div class="overlay-container">
+                    <div class="img-container">
+                        <img src="{% static '/images/team/dogukan_kucuk.jpg' %}" alt="dogukan_kucuk" class="img"/>
+                    </div>
+                    <div class="overlay">
+                        <div class="overlay-text">Forgot your password?</div>
+                    </div>
+                </div>
+                <div class="header-member">Dogukan Küçük</div>
+                <div class="role"></div>
+                <div class="subteam">General application</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section" id="contact">
+
+        <div class="section-title">Contact us</div>
+        <div class="centered-text">
+            Thank you for using our application. We are open for any feedback. 
+            You can contact us via email Vincent.Frippiat@UGent.be or you can call us at +32489652731.
+        </div>
+
+    </div>
+</div>
+
+{% endblock content %}
